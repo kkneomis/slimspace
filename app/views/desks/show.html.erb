@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @desk.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @desk.price %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @desk.space_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @desk.user_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @desk.image %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @desk.description %>
+</p>
+
+<%= link_to 'Edit', edit_desk_path(@desk) %> |
+<%= link_to 'Back', desks_path %>

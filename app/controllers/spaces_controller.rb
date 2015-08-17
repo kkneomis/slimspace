@@ -8,6 +8,8 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])  
   end
   
+
+  
   def index
     @spaces = Space.all
   end

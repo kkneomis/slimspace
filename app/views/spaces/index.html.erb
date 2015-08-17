@@ -15,10 +15,10 @@
 <section>
 	<div class="container">
 		<div class="property-filter clearfix">
-	
+	<% @spaces.each_slice(4) do |space_group| %>
 			<div class="row">
 				<ul class="filter-list clearfix">
-          <% @spaces.each do |space| %>
+        <% space_group.each do |space| %>  
 					<li class="mix sale col-md-3 col-sm-4 mrgb5x" data-price="5">
 						<div class="property-box animated out" data-delay="0" data-animation="fadeInUp">
               <div class="appartment-img"><%= link_to cl_image_tag(space.image_url(:mini)), space %>
@@ -38,6 +38,7 @@
           <% end %>
 				</ul>
 			</div>
+       <% end %>
 		</div>
 	</div>
 </section>

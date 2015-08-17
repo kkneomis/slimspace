@@ -10,14 +10,14 @@
 		</div>
 	</div>
 </section>
+
 <section>
 	<div class="container">
 		<div class="property-single">
 			<div class="col-md-6 no-padding col-sm-8 animated out" data-delay="0" data-animation="fadeInUp">
-        <div class="property-single-img"><%= cl_image_tag(@space.image_url(:display)) %>
+        <div class="property-single-img img-responsive"><%= cl_image_tag(@space.image_url(:display)) %>
 					<div class="image-detail">
 						<h5 class="place-name"><%= @space.name %></h5>
-            <div class="place-price"><span><%= @space.price %><sup>/week</sup></span></div>
 					</div>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 				<div class="property-heading property-info">
 					<h4><span><%= @space.name %></span></h4>
 					<p><%= @space.description %></p>
-          <div class="booking-btn"><%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"book-it" %></div>
+          <div class="booking-btn"><%= link_to "ADD A DESK", new_space_desk_path(@space), class:"book-it" %></div>
 				</div>
         <div class="col-md-6 no-padding col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
 
@@ -34,12 +34,93 @@
 		</div>
     
 	</div>
-
+  
 </section>
-<br><br>
-  <% @space.bookings.each do |b| %>  
-          <div class="alert alert-info" role="alert"> <i class="fa fa-info-circle"></i> <a href="#" class="alert-link">Current Booking:</a> <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours</div>
-          
-       <% end %>
 
+<section>
+	<div class="container" >
+		<div class="featured-properties animated out" data-delay="0" >
+			<div class="section-heading mrgt7x mrgb7x">
+				<h3><span>AVAILABLE SEATS IN THIS LOCATION</span></h3>
+			</div>
+      <% @space.desks.each_slice(3) do |desk_group| %>
+			<div class="section-detail">
+        <% desk_group.each do |desk| %>
+        <div class="col-md-4 col-sm-6">
+					<div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
+							<div class="room-price"><span>$<%= desk.rate %><sup>/week</sup></span></div>
+							<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
+						</div>
+						<div class="property-text">
+							<div class="resort-name">
+								<h4><%= desk.name %></h4>
+								<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+								<p><%= desk.description %></p>
+							</div>
+							<div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_desk_booking_path(@space, desk), class:"more-detail" %>  </div>
+						</div>
+						<ul class="home2 appartment-detail">
+							<li>1 Room</li>
+							<li>2 Beds</li>
+							<li>1 Bath</li>
+							<li>84 SQ FT</li>
+						</ul>
+					</div>
+				</div>
+        
+         <% end %>
+			</div>
+     <% end %>
+		</div>
+	</div>
+</section>
 
+<section>
+	<div class="container">
+		<div class="property-details mrgt4x">
+			<div class="col-md-6 no-padding col-sm-12">
+				<div class="property-features animated out" data-delay="0" >
+					<div class="property-heading">
+						<h4><span>PROPERTY FEATURES</span></h4>
+					</div>
+					<ul class="features-name col-md-4 col-sm-4">
+						<li><i class="fa fa-check"></i><span>swimming pool</span></li>
+						<li><i class="fa fa-check"></i><span>sauna in house</span></li>
+						<li><i class="fa fa-check"></i><span>balcony</span></li>
+						<li><i class="fa fa-check"></i><span>beach house</span></li>
+					</ul>
+					<ul class="features-name col-md-4 col-sm-4">
+						<li><i class="fa fa-check"></i><span>garden</span></li>
+						<li><i class="fa fa-check"></i><span>beach side / view</span></li>
+						<li><i class="fa fa-check"></i><span>garage</span></li>
+						<li><i class="fa fa-check"></i><span>2 boats</span></li>
+					</ul>
+					<ul class="features-name col-md-4 col-sm-4">
+						<li><i class="fa fa-check"></i><span>playhouse</span></li>
+						<li><i class="fa fa-check"></i><span>barbecue grill</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="property-description animated out" data-delay="0">
+					<div class="property-heading">
+						<h4><span>PROPERTY DESCRIPTION</span></h4>
+					</div>
+					<ul class="description-content col-md-6 col-sm-6">
+						<li><span class="description-title">Location </span><span class="title-detail">Bahli Palmstreet 213</span></li>
+						<li><span class="description-title">Price</span><span class="title-detail">699$ per week</span></li>
+						<li><span class="description-title">Type </span><span class="title-detail">Beach House</span></li>
+						<li><span class="description-title">Status </span><span class="title-detail">For Rent</span></li>
+					</ul>
+					<ul class="description-content col-md-6 col-sm-6">
+						<li><span class="description-title">Size </span><span class="title-detail">168 Sq Ft</span></li>
+						<li><span class="description-title">Beds</span><span class="title-detail">4</span></li>
+						<li><span class="description-title">Baths </span><span class="title-detail">2</span></li>
+						<li><span class="description-title">Garages</span><span class="title-detail">1</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

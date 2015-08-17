@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
- 
+ #mount_uploader :avatar, AvatarUploader
   has_many :bookings
-  has_many :spaces, through: :bookings
+  has_many :desks, through: :spaces
   
 end

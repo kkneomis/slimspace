@@ -3,5 +3,5 @@ require_relative './concerns/bookable'
 class Booking < ActiveRecord::Base
   include Bookable
   
-  belongs_to :space
+  belongs_to :desk
 end

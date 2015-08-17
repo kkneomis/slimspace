@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   # GET /bookings
   # GET /bookings.json
   def index
@@ -8,6 +8,9 @@ class BookingsController < ApplicationController
     @space = Space.find(params[:space_id])
   end
 
+  def booked
+    @bookings= Booking.where(user_id: current_user.id)
+  end
   # GET /bookings/1
   # GET /bookings/1.json
   def show
@@ -16,7 +19,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    
+    @desk = Desk.find(params[:desk_id])
     @space = Space.find(params[:space_id])
   end
 
@@ -30,8 +33,10 @@ class BookingsController < ApplicationController
     
     @booking = Booking.new(booking_params)
     @space = Space.find(params[:space_id])
+    @desk = Desk.find(params[:desk_id])
     @booking.space_id = @space.id
     @booking.user_id = current_user.id
+    @booking.desk_id = @desk.id 
 
     respond_to do |format|
       if @booking.save
@@ -76,6 +81,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:start, :end, :user_id, :space_id, :start_time, :end_time, :length)
+      params.require(:booking).permit(:start, :end, :user_id, :space_id, :start_time, :end_time, :length, :desk_id)
     end
 end
