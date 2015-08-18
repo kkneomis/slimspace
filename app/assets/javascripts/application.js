@@ -26,5 +26,4 @@
 //= require owl.carousel.min
 //= require revolution.slider
 //= require scripts
-//= require guidGenerator
 //= require_tree .
