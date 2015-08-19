@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150816212621) do
 
   create_table "desks", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "price"
     t.integer  "space_id"
     t.integer  "user_id"
     t.string   "image"
