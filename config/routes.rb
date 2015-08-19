@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'users/show'
 
   resources :spaces
-
+  
 
   
   resources :spaces do

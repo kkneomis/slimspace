@@ -26,5 +26,6 @@
 //= require owl.carousel.min
 //= require revolution.slider
 //= require scripts
+
 //= require jquery.datetimepicker.js
 //= require_tree .
