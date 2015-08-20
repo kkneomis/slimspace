@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @bookings = Booking.all
-    @space = Space.find(params[:space_id])
+
   end
 
   def booked

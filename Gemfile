@@ -24,7 +24,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'devise'
 # bundle exec rake doc:rails generates the API under doc/api.
-
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 gem 'carrierwave' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
