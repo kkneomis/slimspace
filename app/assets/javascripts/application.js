@@ -26,6 +26,7 @@
 //= require owl.carousel.min
 //= require revolution.slider
 //= require scripts
+//= requite custom
 //= require moment
 //= require fullcalendar
 //= require jquery.datetimepicker.js
