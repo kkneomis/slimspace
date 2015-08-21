@@ -53,11 +53,7 @@
 				<nav class="navbar navbar-default">
 					<div id="navbar" class="navbar-collapse collapse pull-right">
 						<ul class="nav navbar-nav">
-							<li class="active"><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">HOME</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="index.html">HOME 1</a></li>
-									<li><a href="home-2.html">HOME 2</a></li>
-								</ul>
+							<li class="active"><a href="/">HOME</a>
 							</li>
 							<li><a href="#">FEATURES</a></li>
 							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PROPERTIES</a>
@@ -88,12 +84,13 @@
 									<li><a href="shortcodes.html">SHORTCODES</a></li>
 								</ul>
 							</li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">CONTACT US</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="contact.html">CONTACT 1</a></li>
-									<li><a href="contact-2.html">CONTACT 2</a></li>
-								</ul>
+              <% if user_signed_in? %>  
+              <li><%= link_to "MY PROFILE", current_user %>
 							</li>
+              <li><%= link_to "MANAGE", manage_user_path(current_user) %>
+							</li>
+              <% end %> 
+             
 						</ul>
 					</div>
 				</nav>

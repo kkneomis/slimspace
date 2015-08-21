@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
   
-  
-  get 'users/show'
 
+  
   resources :spaces
-  resources :bookings
+
+  
+  
+  resources :users do 
+    member do
+      get "manage", to: "users#manage"
+    end
+  end
+  
+  
+  resources :bookings, :only => [:index]
 
   
   resources :spaces do
@@ -16,7 +25,6 @@ Rails.application.routes.draw do
   devise_for :users
   
 
-  
   get 'bookings/booked'
   
   get 'static_pages/about'
