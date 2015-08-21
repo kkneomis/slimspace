@@ -43,5 +43,33 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+  <script>
+  $('#calendar').fullCalendar({
+    events: '/bookings.json',
+    eventLimit: true, 
+    header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			}
+  });
+  
+</script>
+
+
+<script>/*
+window.onerror = function(errorMsg) {
+	$('#console').html($('#console').html()+'<br>'+errorMsg)
+}*/
+$('#datetimepicker').datetimepicker({
+dayOfWeekStart : 1,
+lang:'en',
+mask:'9999/19/39 29:59'
+
+});
+
+
+</script>
+  
 </body>
 </html>
