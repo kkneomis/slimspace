@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
  #mount_uploader :avatar, AvatarUploader
   has_many :bookings
   has_many :desks, through: :spaces
-  
+    mount_uploader :image, AvatarUploader
 end
