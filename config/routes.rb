@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
   
-
-  
-  resources :spaces
-
-  
-  
-  resources :users do 
+  devise_for :users 
+    
+  resources :users do
     member do
       get "manage", to: "users#manage"
     end
   end
+
+
+  post '/rate' => 'rater#create', :as => 'rate'
   
+  resources :spaces
+
   
+
   resources :bookings, :only => [:index]
 
   
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
     end
 	end
 
-  devise_for :users
+
   
 
   get 'bookings/booked'

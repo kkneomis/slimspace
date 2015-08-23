@@ -1,1 +1,79 @@
-<h1>Manage</h1>
+<% @spaces.each do |space| %>
+<section class="border-top">
+	<div class="container">
+		<div class="page-title mrgb6x mrgt6x clearfix">
+			<h4 class="page-name"><%= space.city %></h4>
+      <div class="tag-bar"> <a href="#"><span><%= space.state %></span></a> </div>
+			<ul class="breadcrumb">
+				<li><a href="#">Pages</a></li>
+				<li class="active"><a href="#">Property Single</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+		<div class="property-single">
+			<div class="col-md-6 no-padding col-sm-8 animated out" data-delay="0" data-animation="fadeInUp">
+        <div ><%= cl_image_tag(space.image_url(:display)) %>
+					<div class="image-detail">
+						<h5 class="place-name"><%= space.name %></h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-4 animated out" data-delay="0" data-animation="fadeInUp">
+				<div class="property-heading property-info">
+					<h4><span><%= space.name %></span></h4>
+					<p><%= space.description %></p>
+          <div class="booking-btn"><%= link_to "ADD A DESK", new_space_desk_path(space), class:"book-it" %></div>
+				</div>
+        <div class="col-md-6 no-padding col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+
+			</div>
+			</div>
+		</div>
+    
+	</div>
+  
+</section>
+
+<section>
+	<div class="container" >
+		<div class="featured-properties animated out" data-delay="0" >
+			<div class="section-heading mrgt7x mrgb7x">
+				<h3><span>AVAILABLE SEATS IN THIS LOCATION</span></h3>
+			</div>
+      <% space.desks.each_slice(3) do |desk_group| %>
+			<div class="section-detail">
+        <% desk_group.each do |desk| %>
+        <div class="col-md-4 col-sm-6">
+					<div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
+							<div class="room-price"><span>$<%= desk.rate %><sup>/week</sup></span></div>
+							<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
+						</div>
+						<div class="property-text">
+							<div class="resort-name">
+								<h4><%= desk.name %></h4>
+								<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+								<p><%= desk.description %></p>
+							</div>
+              <div class="detail-btn mrgt4x mrgb3x"><%= link_to "EDIT", edit_space_desk_path(space), class:"more-detail" %>  </div>
+						</div>
+						<ul class="home2 appartment-detail">
+							<li>1 Room</li>
+							<li>2 Beds</li>
+							<li>1 Bath</li>
+							<li>84 SQ FT</li>
+						</ul>
+					</div>
+				</div>
+        
+         <% end %>
+			</div>
+     <% end %>
+		</div>
+	</div>
+</section>
+<% end %>

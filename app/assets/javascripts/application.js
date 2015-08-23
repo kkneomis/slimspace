@@ -30,4 +30,6 @@
 //= require moment
 //= require fullcalendar
 //= require jquery.datetimepicker.js
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .

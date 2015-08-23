@@ -17,7 +17,8 @@
 			<div class="col-md-6 no-padding col-sm-8 animated out" data-delay="0" data-animation="fadeInUp">
         <div ><%= cl_image_tag(@space.image_url(:display)) %>
 					<div class="image-detail">
-						<h5 class="place-name"><%= @space.name %></h5>
+						<h5 class="place-name"><%= @space.name %>
+              <%= rating_for @space, "name", :disable_after_rate => true %></h5>
 					</div>
 				</div>
 			</div>
@@ -49,7 +50,7 @@
         <div class="col-md-4 col-sm-6">
 					<div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
 						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
-							<div class="room-price"><span>$<%= desk.rate %><sup>/week</sup></span></div>
+              <div class="room-price"><span>$<%= desk.price %><sup>/week</sup></span></div>
 							<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
 						</div>
 						<div class="property-text">

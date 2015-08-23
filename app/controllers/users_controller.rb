@@ -1,4 +1,3 @@
-
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :manage]
     
@@ -10,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   def manage
-    
+    @spaces = Space.where(user_id: current_user.id)
   end
   
  private
@@ -18,4 +17,5 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
     end
+  
 end
