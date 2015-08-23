@@ -35,6 +35,8 @@ gem 'cloudinary'
 gem 'bookable', '~> 0.0.4'
 #Gem to set booking times for Spaces
 gem 'ratyrate'
+
+gem "therubyracer"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

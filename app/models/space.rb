@@ -4,5 +4,5 @@ class Space < ActiveRecord::Base
   
   has_many :users, through: :bookings
   has_many :desks
-  ratyrate_rateable "name"
+  ratyrate_rateable "space"
 end

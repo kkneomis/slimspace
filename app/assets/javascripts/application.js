@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
-//= require jquery.turbolinks
 //= require bootstrap
 //= require countTo
 //= require jquery-ui
@@ -32,4 +30,6 @@
 //= require jquery.datetimepicker.js
 //= require jquery.raty
 //= require ratyrate
+//= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .

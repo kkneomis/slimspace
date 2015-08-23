@@ -50,7 +50,7 @@
         <div class="col-md-4 col-sm-6">
 					<div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
 						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
-							<div class="room-price"><span>$<%= desk.rate %><sup>/week</sup></span></div>
+              <div class="room-price"><span>$<%= desk.price %><sup>/week</sup></span></div>
 							<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
 						</div>
 						<div class="property-text">
@@ -59,7 +59,7 @@
 								<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
 								<p><%= desk.description %></p>
 							</div>
-              <div class="detail-btn mrgt4x mrgb3x"><%= link_to "EDIT", edit_space_desk_path(space), class:"more-detail" %>  </div>
+              <div class="detail-btn mrgt4x mrgb3x"><%= link_to "EDIT", edit_space_desk_path(space, desk), class:"more-detail" %>  </div>
 						</div>
 						<ul class="home2 appartment-detail">
 							<li>1 Room</li>

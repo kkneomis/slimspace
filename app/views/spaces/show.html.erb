@@ -18,7 +18,7 @@
         <div ><%= cl_image_tag(@space.image_url(:display)) %>
 					<div class="image-detail">
 						<h5 class="place-name"><%= @space.name %>
-              <%= rating_for @space, "name", :disable_after_rate => true %></h5>
+              <%= rating_for @space, "space", :disable_after_rate => true %></h5>
 					</div>
 				</div>
 			</div>
@@ -51,21 +51,16 @@
 					<div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
 						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
               <div class="room-price"><span>$<%= desk.price %><sup>/week</sup></span></div>
-							<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
 						</div>
 						<div class="property-text">
 							<div class="resort-name">
-								<h4><%= desk.name %></h4>
-								<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+								<h4><%= desk.name %></h4><br>
 								<p><%= desk.description %></p>
 							</div>
 							<div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_desk_booking_path(@space, desk), class:"more-detail" %>  </div>
 						</div>
 						<ul class="home2 appartment-detail">
-							<li>1 Room</li>
-							<li>2 Beds</li>
-							<li>1 Bath</li>
-							<li>84 SQ FT</li>
+              <li><%= rating_for desk, "desk", :disable_after_rate => true %></li>
 						</ul>
 					</div>
 				</div>
