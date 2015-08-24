@@ -20,7 +20,7 @@
 				<ul class="filter-list clearfix">
         <% space_group.each do |space| %>  
 					<li class="mix sale col-md-3 col-sm-4 mrgb5x" data-price="5">
-						<div class="property-box animated out" data-delay="0" data-animation="fadeInUp">
+						<div class="property-box" >
               <div class="appartment-img"><%= link_to cl_image_tag(space.image_url(:mini)), space %>
 							</div>
 							<div class="property-text">

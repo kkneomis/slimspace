@@ -2,14 +2,14 @@
 <% @page="index" %>
 <section>
 	<div class="container" >
-		<div class="featured-properties animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="featured-properties " >
 			<div class="section-heading mrgt7x mrgb7x">
 				<h3><span>OUR FEATURED PROPERTIES</span></h3>
 			</div>
       <% @spaces.each_slice(3) do |space_group| %>
 			<div class="section-detail">
          <% space_group.each do |space| %>
-				    <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+				    <div class="col-md-4 col-sm-6 " >
 					<div class="property-box border-hover">
             <div class="appartment-img"><%= cl_image_tag(space.image_url(:thumbnail)) %>
               <div class="detail-btn"> <%= link_to 'More Detail', space, class:"more-detail" %> </div>

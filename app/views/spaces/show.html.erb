@@ -40,7 +40,7 @@
 
 <section>
 	<div class="container" >
-		<div class="featured-properties animated out" data-delay="0" >
+		<div class="featured-properties animated out" >
 			<div class="section-heading mrgt7x mrgb7x">
 				<h3><span>AVAILABLE SEATS IN THIS LOCATION</span></h3>
 			</div>
@@ -48,7 +48,7 @@
 			<div class="section-detail">
         <% desk_group.each do |desk| %>
         <div class="col-md-4 col-sm-6">
-					<div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+					<div class="home2 property-box border-hover animated out" >
 						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
               <div class="room-price"><span>$<%= desk.price %><sup>/week</sup></span></div>
 						</div>
@@ -76,7 +76,7 @@
 	<div class="container">
 		<div class="property-details mrgt4x">
 			<div class="col-md-6 no-padding col-sm-12">
-				<div class="property-features animated out" data-delay="0" >
+				<div class="property-features animated out" >
 					<div class="property-heading">
 						<h4><span>PROPERTY FEATURES</span></h4>
 					</div>
