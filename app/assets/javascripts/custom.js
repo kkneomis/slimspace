@@ -1,4 +1,4 @@
-window.onerror = function(errorMsg) {
+/*window.onerror = function(errorMsg) {
 	$('#console').html($('#console').html()+'<br>'+errorMsg)
 }*/
 $('#datetimepicker').datetimepicker({
@@ -17,7 +17,7 @@ mask:'9999/19/39 29:59'
     eventLimit: true, 
     header: {
 				left: 'prev,next today',
-				center: 'title',s
+				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			}
   });

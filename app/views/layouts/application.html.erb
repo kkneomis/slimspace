@@ -11,7 +11,7 @@
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
   <!-- Latest compiled and minified JavaScript -->
    
   
@@ -43,7 +43,8 @@
   <%= render 'layouts/footer' %>
 
 
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
   <script>
   $('#calendar').fullCalendar({
     events: '/bookings.json',
@@ -58,10 +59,7 @@
 </script>
 
 
-<script>/*
-window.onerror = function(errorMsg) {
-	$('#console').html($('#console').html()+'<br>'+errorMsg)
-}*/
+<script>
 $('#datetimepicker').datetimepicker({
 dayOfWeekStart : 1,
 lang:'en',

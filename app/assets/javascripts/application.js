@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 // require bootstrap-sprockets
+//= require turbolinks
+//= require jquery.turbolinks
 //= require countTo
 //= require jquery-ui
 //= require jquery.appear
@@ -23,12 +25,10 @@
 //= require owl.carousel.min
 //= require revolution.slider
 //= require scripts
-//= requite custom
+//= require custom
 //= require moment
 //= require fullcalendar
 //= require jquery.datetimepicker.js
 //= require jquery.raty
 //= require ratyrate
-//= require turbolinks
-
 //= require_tree .
