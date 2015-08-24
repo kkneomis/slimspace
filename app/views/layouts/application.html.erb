@@ -46,7 +46,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   
   <script>
-  $('#calendar').fullCalendar({
+    
+    // A $( document ).ready() block.
+$( document ).ready(function() {
+    
+    $('#calendar').fullCalendar({
     events: '/bookings.json',
     eventLimit: true, 
     header: {
@@ -56,16 +60,18 @@
 			}
   });
   
-</script>
 
-
-<script>
-$('#datetimepicker').datetimepicker({
-dayOfWeekStart : 1,
-lang:'en',
-mask:'9999/19/39 29:59'
-
+  $('#datetimepicker').datetimepicker({
+    dayOfWeekStart : 1,
+    lang:'en',
+    mask:'9999/19/39 29:59'
+  });
+  
+  
+  
 });
+    
+    
 
 
 </script>
