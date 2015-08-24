@@ -20,6 +20,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @desk = Desk.find(params[:desk_id])
     @space = Space.find(params[:space_id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @booking }
+    end
+    
+    
   end
 
   # GET /bookings/1/edit

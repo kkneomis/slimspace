@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// require bootstrap-sprockets
 //= require jquery
 //= require jquery_ujs
-// require bootstrap-sprockets
+
 //= require turbolinks
 //= require jquery.turbolinks
 //= require countTo
@@ -28,6 +29,7 @@
 //= require custom
 //= require moment
 //= require fullcalendar
+//= require bootstrap-datepicker
 //= require jquery.datetimepicker.js
 //= require jquery.raty
 //= require ratyrate

@@ -25,6 +25,11 @@ gem 'bootstrap-sass'
 gem 'devise'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'fullcalendar-rails'
+
+gem 'bootstrap-datepicker-rails'
+
+
+
 gem 'momentjs-rails'
 gem 'carrierwave' 
 # Use ActiveModel has_secure_password

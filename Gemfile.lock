@@ -49,6 +49,8 @@ GEM
     bookable (0.0.52)
       jbuilder (~> 1.2)
       rails_12factor
+    bootstrap-datepicker-rails (1.4.0)
+      railties (>= 3.0)
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
@@ -202,6 +204,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors (= 2.1.1)
   bookable (~> 0.0.4)
+  bootstrap-datepicker-rails
   bootstrap-sass
   carrierwave
   cloudinary
