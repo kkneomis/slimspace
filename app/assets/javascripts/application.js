@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+// require bootstrap-sprockets
 //= require countTo
 //= require jquery-ui
 //= require jquery.appear
