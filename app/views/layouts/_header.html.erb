@@ -1,3 +1,4 @@
+
 <div class="top-bar">
 	<div class="container">
 		<div class="left-bar">
@@ -20,13 +21,10 @@
       <% if user_signed_in? %>
       
       <ul class="login">
-        <li><%= link_to "Add a Space", new_space_path, class:"btn btn-success" %></li>
-        <li><i class="fa fa-mail-forward"></i></li>
-        <li><%= link_to "View Spaces", spaces_path %></li>
         <li><i class="fa fa-sign-out"></i></li>
         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <li><i class="fa fa-person"></i></li>
-        <li><%= link_to "My Booking", bookings_booked_path %></li>
+        
 			</ul>
       <% else %>
       
@@ -55,43 +53,21 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="/">HOME</a>
 							</li>
-							<li><a href="#">FEATURES</a></li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PROPERTIES</a>
+             <% if user_signed_in? %> 
+              <li><%= link_to "VIEW SPACES", spaces_path %></li>
+        
+              <li><%= link_to "MY PROFILE", current_user %></li>
+              <li><%= link_to "MY BOOKINGS", bookings_booked_path %></li>
+              <li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">MANAGE</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="properties-list.html">PROPERTIES LIST</a></li>
-									<li><a href="properties-list-2.html">PROPERTIES LIST 2</a></li>
-									<li><a href="properties-right-bar.html">PROPERTIES RIGHT SIDEBAR</a></li>
-									<li><a href="properties-right-bar-2.html">PROPERTIES RIGHT SIDEBAR 2</a></li>
-									<li><a href="property-single.html">PROPERTY SINGLE</a></li>
-									<li><a href="property-single-2.html">PROPERTY SINGLE 2</a></li>
-									<li><a href="property-single-side-bar.html">PROPERTY SINGLE SIDEBAR</a></li>
+									<li><%= link_to "MANAGE SPACES", manage_user_path(current_user) %></li>
+									<li><%= link_to "ADD A SPACE", new_space_path %></li>
 								</ul>
 							</li>
-							<li><a href="agents.html">AGENTS</a></li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">BLOG</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="blog-single-post.html">Blog Single Post</a></li>
-									<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-								</ul>
-							</li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PAGES</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="service-page.html">SERVICE PAGE</a></li>
-									<li><a href="service-list.html">SERVICE LIST</a></li>
-									<li><a href="pricing.html">PRICING</a></li>
-									<li><a href="booking-page.html">BOOKING</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="shortcodes.html">SHORTCODES</a></li>
-								</ul>
-							</li>
-              <% if user_signed_in? %>  
-              <li><%= link_to "MY PROFILE", current_user %>
-							</li>
-              <li><%= link_to "MANAGE", manage_user_path(current_user) %>
-							</li>
+            
               <% end %> 
              
-						</ul>
+				
 					</div>
 				</nav>
 			</div>
