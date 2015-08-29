@@ -33,25 +33,32 @@
 /*--------------------------------------------*/
 .jumbotron{
   text-align: center;
-background:#CCFFCC;
+background:#2b4261;
   background-repeat:no-repeat;
 background-position:center center;
 -o-background-size: 100% 100%, auto;
 -moz-background-size: 100% 100%, auto;
 -webkit-background-size: 100% 100%, auto;
 background-size: 100% 100%, auto;
-  
-  
 
   
 }
 
+
+.slider{
+    color: #fff;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    text-transform: uppercase !important;
+}
+
+.slider h3{
+  color: #fff;
+}
+
 .slider h1{
   font-size: 60px;
-  color: #000;
   font-weight: 700 !important;
   text-rendering: optimizelegibility;
   display: block;
-  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
-  text-transform: uppercase !important;
+
 }
