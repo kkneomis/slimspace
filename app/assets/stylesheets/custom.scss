@@ -31,3 +31,27 @@
 
 
 /*--------------------------------------------*/
+.jumbotron{
+  text-align: center;
+background:#CCFFCC;
+  background-repeat:no-repeat;
+background-position:center center;
+-o-background-size: 100% 100%, auto;
+-moz-background-size: 100% 100%, auto;
+-webkit-background-size: 100% 100%, auto;
+background-size: 100% 100%, auto;
+  
+  
+
+  
+}
+
+.slider h1{
+  font-size: 60px;
+  color: #000;
+  font-weight: 700 !important;
+  text-rendering: optimizelegibility;
+  display: block;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  text-transform: uppercase !important;
+}
