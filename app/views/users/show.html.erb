@@ -1,2 +1,43 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+    <div class="span3 well">
+        <center>
+          <%= cl_image_tag(@user.avatar_url(:display), class: "img-circle") %>
+        
+          <h3><%= @user.name %></h3>
+        
+		</center>
+      <em><%= @user.bio %></em>
+  </div>
+</div>
+
+
+<section>
+	<div class="container">
+		<div class="property-filter clearfix">
+	<% @spaces.each_slice(4) do |space_group| %>
+			<div class="row">
+				<ul class="filter-list clearfix">
+        <% space_group.each do |space| %>  
+					<li class="mix sale col-md-3 col-sm-4 mrgb5x" data-price="5">
+						<div class="property-box" >
+              <div class="appartment-img"><%= link_to cl_image_tag(space.image_url(:mini)), space %>
+							</div>
+							<div class="property-text">
+								<div class="appartment-name">
+									<h4><%= space.name %></h4>
+                  <p><%= space.city %>, <%= space.state %></p>
+								</div>
+								<div class="property-price">
+                  <h1><span><sup>$</sup><%= space.price %></span></h1>
+								</div>
+								
+							</div>
+						</div>
+					</li>
+          <% end %>
+				</ul>
+			</div>
+       <% end %>
+		</div>
+	</div>
+</section>
