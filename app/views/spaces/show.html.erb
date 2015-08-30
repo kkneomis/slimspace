@@ -32,7 +32,7 @@
           </p>
           <p><%= @space.description %></p>
           
-          <% if current_user == @space.user %>
+          <% if user_signed_in? && current_user == @space.user %>
             <div class="booking-btn"><%= link_to "ADD A DESK", new_space_desk_path(@space), class:"book-it" %></div>
           <% end %>
 				</div>

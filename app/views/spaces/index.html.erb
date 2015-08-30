@@ -2,11 +2,11 @@
 <section class="border-top">
 	<div class="container">
 		<div class="page-title mrgb5x mrgt6x clearfix">
-			<h4 class="page-name">properties list</h4>
-			<div class="tag-bar"> <a href="#"><span>Prime production spaces</span></a> </div>
+			<h4 class="page-name">Available Spaces</h4>
+			<div class="tag-bar"> <a href="#"><span>Click to view details</span></a> </div>
 			<ul class="breadcrumb">
 				<li><a href="/">Home</a></li>
-				<li class="active"><%= link_to 'New Space', new_space_path %></li>
+				<li class="active"><a href="#">Spaces</a></li>
 			</ul>
 		</div>
 	</div>
@@ -31,7 +31,10 @@
 								<div class="property-price">
                   <h1><span><sup>$</sup><%= space.price %></span></h1>
 								</div>
-								
+								<ul class="appartment-detail">
+                <li><%= space.desks.count %> seats in this space</li>
+
+              </ul>
 							</div>
 						</div>
 					</li>
