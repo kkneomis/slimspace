@@ -2,7 +2,7 @@ class DesksController < ApplicationController
   before_action :set_desk, only: [:show, :edit, :update, :destroy]
    before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
-  before_filter :check_space_user, only: [:new, :create]
+  before_filter :check_space_user, only: [:new, :create,:edit]
   # GET /desks
   # GET /desks.json
   def index
@@ -51,7 +51,7 @@ class DesksController < ApplicationController
   def update
     respond_to do |format|
       if @desk.update(desk_params)
-        format.html { redirect_to @desk, notice: 'Desk was successfully updated.' }
+        format.html { redirect_to @desk.space, notice: 'Desk was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,14 +82,14 @@ class DesksController < ApplicationController
     end
   
   def check_user
-    if current_user != @desk.user
+    if current_user.id != @desk.user_id
        redirect_to root_url, alert: "Sorry, this Desk belongs to someone else"\
       end
   end
   
   def check_space_user
     @space = Space.find(params[:space_id])
-    if current_user != @space.user
+    if current_user.id != @space.user_id
       redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
       end
   end

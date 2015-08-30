@@ -65,7 +65,7 @@ class SpacesController < ApplicationController
     end
   
   def check_user
-    if current_user != @space.user
+    if current_user.id != @space.user_id
       redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
         end
     end

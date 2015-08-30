@@ -4,8 +4,8 @@
 			<h4 class="page-name"><%= @space.city %></h4>
       <div class="tag-bar"> <a href="#"><span><%= @space.state %></span></a> </div>
 			<ul class="breadcrumb">
-				<li><a href="#">Pages</a></li>
-				<li class="active"><a href="#">Property Single</a></li>
+				<li><a href="#">Spaces</a></li>
+				<li class="active"><%= @space.name %></li>
 			</ul>
 		</div>
 	</div>
@@ -27,13 +27,15 @@
 					<h4><span><%= @space.name %></span></h4>
 					<p>
             <b>Address:</b>
-            <%= @space.address %>, <%= @space.city %>, <%= @space.state %>
-          
+            <%= @space.address %>, <%= @space.city %>, <%= @space.state %> <br>
+             <b><%= @space.desks.count %> seats in this space</b>
           </p>
           <p><%= @space.description %></p>
+          <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
           
-          <% if user_signed_in? && current_user == @space.user %>
+          <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
             <div class="booking-btn"><%= link_to "ADD A DESK", new_space_desk_path(@space), class:"book-it" %></div>
+            <div class="booking-btn"><%= link_to "EDIT SPACE", edit_space_path(@space), class:"book-it" %></div>
           <% end %>
 				</div>
         <div class="col-md-6 no-padding col-sm-6 animated out" >
@@ -66,6 +68,9 @@
 								<p><%= desk.description %></p>
 							</div>
 							<div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_desk_booking_path(@space, desk), class:"more-detail" %>  </div>
+              <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
+              <div class="booking-btn"><%= link_to "EDIT DESK", edit_space_desk_path(@space, desk), class:"book-it" %></div>
+              <% end %>
 						</div>
 						<ul class="home2 appartment-detail">
               <li><%= rating_for desk, "desk", :disable_after_rate => true %></li>
