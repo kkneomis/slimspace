@@ -1,6 +1,8 @@
 class DesksController < ApplicationController
   before_action :set_desk, only: [:show, :edit, :update, :destroy]
    before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy]
+  before_filter :check_space_user, only: [:new, :create]
   # GET /desks
   # GET /desks.json
   def index
@@ -78,4 +80,18 @@ class DesksController < ApplicationController
     def desk_params
       params.require(:desk).permit(:name, :price, :space_id, :user_id, :image, :description, :rate)
     end
+  
+  def check_user
+    if current_user != @desk.user
+       redirect_to root_url, alert: "Sorry, this Desk belongs to someone else"\
+      end
+  end
+  
+  def check_space_user
+    @space = Space.find(params[:space_id])
+    if current_user != @space.user
+      redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
+      end
+  end
+  
 end

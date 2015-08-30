@@ -1,7 +1,7 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  #before_filter :check_user, only: [:edit, :update, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy]
 
   
   def show
@@ -64,9 +64,10 @@ class SpacesController < ApplicationController
       params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image)
     end
   
-#def check_user
-  #if current_user != @space.user
- #   redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
-  #    end
- # end
+  def check_user
+    if current_user != @space.user
+      redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
+        end
+    end
+  
 end

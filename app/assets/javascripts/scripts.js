@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
 		{
 					//delay:9000,
 					 //startwidth:1170,
-					 startheight:710,
+					 startheight:500,
 					 startWithSlide:0,
 			 
 					 fullScreenAlignForce:"off",

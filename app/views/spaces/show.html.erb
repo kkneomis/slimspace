@@ -25,8 +25,16 @@
 			<div class="col-md-6 col-sm-4 animated out" >
 				<div class="property-heading property-info">
 					<h4><span><%= @space.name %></span></h4>
-					<p><%= @space.description %></p>
-          <div class="booking-btn"><%= link_to "ADD A DESK", new_space_desk_path(@space), class:"book-it" %></div>
+					<p>
+            <b>Address:</b>
+            <%= @space.address %>, <%= @space.city %>, <%= @space.state %>
+          
+          </p>
+          <p><%= @space.description %></p>
+          
+          <% if current_user == @space.user %>
+            <div class="booking-btn"><%= link_to "ADD A DESK", new_space_desk_path(@space), class:"book-it" %></div>
+          <% end %>
 				</div>
         <div class="col-md-6 no-padding col-sm-6 animated out" >
 

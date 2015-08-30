@@ -23,9 +23,8 @@
                 <h1><span><sup>$</sup><%= space.price %></span></h1>
 							</div>
 							<ul class="appartment-detail">
-                <li><%= space.number_of_seats %> seats in this space</li>
-        <%= link_to 'Edit', edit_space_path(space) %>
-        <%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <li><%= space.desks.count %> seats in this space</li>
+
               </ul>
 						</div>
 					</div>
