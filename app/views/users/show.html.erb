@@ -4,7 +4,9 @@
           <%= cl_image_tag(@user.avatar_url(:display), class: "img-circle") %>
         
           <h3><%= @user.name %></h3>
-        
+          <% if @user == current_user %>
+              <i class="fa fa-pencil"><%= link_to "Edit Profile", edit_user_registration_path  %></i>
+          <% end %>
 		</center>
       <em><%= @user.bio %></em>
   </div>
