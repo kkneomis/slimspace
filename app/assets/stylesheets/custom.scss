@@ -31,31 +31,13 @@
 
 
 /*--------------------------------------------*/
-.jumbotron{
-  text-align: center;
-background:#2b4261;
-  background-repeat:no-repeat;
-background-position:center center;
--o-background-size: 100% 100%, auto;
--moz-background-size: 100% 100%, auto;
--webkit-background-size: 100% 100%, auto;
-background-size: 100% 100%, auto;
 
-  
+.inner-text h3{
+  color:#fff;
 }
 
-
-.slider{
-    color: #fff;
-    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
-    text-transform: uppercase !important;
-}
-
-.slider h3{
-  color: #fff;
-}
-
-.slider h1{
+.inner-text h1{
+  color:#fff;
   font-size: 60px;
   font-weight: 700 !important;
   text-rendering: optimizelegibility;

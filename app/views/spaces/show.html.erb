@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="property-single">
 			<div class="col-md-6 no-padding col-sm-8 animated out" >
-        <div ><%= cl_image_tag(@space.image_url(:display)) %>
+        <div ><%= cl_image_tag(@space.image_url(:display), width:"100%")%>
 					<div class="image-detail">
 						<h5 class="place-name"><%= @space.name %>
               <%= rating_for @space, "space", :disable_after_rate => true %></h5>
@@ -59,7 +59,7 @@
         <% desk_group.each do |desk| %>
         <div class="col-md-4 col-sm-6">
 					<div class="home2 property-box border-hover animated out" >
-						<div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail)) %>
+            <div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail), width:"100%") %>
               <div class="room-price"><span>$<%= desk.price %><sup>/week</sup></span></div>
 						</div>
 						<div class="property-text">
