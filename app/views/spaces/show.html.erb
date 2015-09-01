@@ -54,9 +54,9 @@
 			<div class="section-heading mrgt7x mrgb7x">
 				<h3><span>AVAILABLE SEATS IN THIS LOCATION</span></h3>
 			</div>
-      <% @space.desks.each_slice(3) do |desk_group| %>
+      <% @space.desks.order('created_at DESC').each_slice(3) do |desk_group| %>
 			<div class="section-detail">
-        <% desk_group.order('created_at DESC').each do |desk| %>
+        <% desk_group.each do |desk| %>
         <div class="col-md-4 col-sm-6">
 					<div class="home2 property-box border-hover animated out" >
             <div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail), width:"100%") %>
