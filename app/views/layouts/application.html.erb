@@ -60,6 +60,16 @@ $( document ).ready(function() {
 			}
   });
   
+  $('#mycalendar').fullCalendar({
+    events: '/bookings/booked.json',
+    eventLimit: true, 
+    header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			}
+  });
+  
 
   $('#datetimepicker').datetimepicker({
     dayOfWeekStart : 1,

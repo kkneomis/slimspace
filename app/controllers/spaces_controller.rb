@@ -11,7 +11,7 @@ class SpacesController < ApplicationController
 
   
   def index
-    @spaces = Space.all
+    @spaces = Space.order('created_at DESC')
   end
 
   def new
