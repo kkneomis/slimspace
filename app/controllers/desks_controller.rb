@@ -63,9 +63,10 @@ class DesksController < ApplicationController
   # DELETE /desks/1
   # DELETE /desks/1.json
   def destroy
+    @space = Space.find(params[:space_id])
     @desk.destroy
     respond_to do |format|
-      format.html { redirect_to desks_url }
+      format.html { redirect_to @space }
       format.json { head :no_content }
     end
   end

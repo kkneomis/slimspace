@@ -12,19 +12,16 @@
          <% space_group.each do |space| %>
 				    <div class="col-md-4 col-sm-6 " >
 					<div class="property-box border-hover">
-            <div class="appartment-img"><%= cl_image_tag(space.image_url(:thumbnail)) %>
+            <div class="appartment-img"><%= cl_image_tag(space.image_url(:thumbnail), width:"100%") %>
               <div class="detail-btn"> <%= link_to 'More Detail', space, class:"more-detail" %> </div>
 						</div>
 						<div class="property-text">
 							<div class="appartment-name">
 								<h4><%= space.name %></h4>
 							</div>
-							<div class="property-price">
-                <h1><span><sup>$</sup><%= space.price %></span></h1>
-							</div>
 							<ul class="appartment-detail">
-                <li><%= space.desks.count %> seats in this space</li>
-
+                <li><%= space.desks.count %> seats in this space</li> in
+                <li><%= space.city %>, <%= space.state %></li>
               </ul>
 						</div>
 					</div>
