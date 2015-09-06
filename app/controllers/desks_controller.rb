@@ -66,7 +66,7 @@ class DesksController < ApplicationController
     @space = Space.find(params[:space_id])
     @desk.destroy
     respond_to do |format|
-      format.html { redirect_to @space }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

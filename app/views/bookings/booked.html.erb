@@ -34,7 +34,7 @@
             <b>Address:</b>
           <%=@space.address %>, <%= @space.city %>, <%= @space.state %> <br>
           </p>
-        <%= link_to 'DELETE', b , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-lg" %>
+        <%= link_to 'DELETE', [@space, b.desk , b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
             </div>
      
      </div> 

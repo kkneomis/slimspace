@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   
   resources :spaces
 
+  resources :bookings, :only => [:index]
+  #resources :desks, :only => [:destroy]
   
-
-  resources :bookings, :only => [:index, :destroy]
 
   
   resources :spaces do
     resources :desks do
-	    resources :bookings
+      resources :bookings
     end
 	end
 
