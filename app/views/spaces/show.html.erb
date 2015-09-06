@@ -35,8 +35,8 @@
           
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
            <%= link_to "ADD A DESK", new_space_desk_path(@space), class:"btn btn-primary btn-lg" %>
-          <%= link_to "EDIT SPACE", edit_space_path(@space), class:"btn btn-success btn-lg" %>
-           <%= link_to 'DELETE SPACE', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger btn-lg" %>
+          <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success " %>
+           <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
           <% end %>
 				</div>
         <div class="col-md-6 no-padding col-sm-6 animated out" >
@@ -70,8 +70,8 @@
 							</div>
 							<div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_desk_booking_path(@space, desk), class:"more-detail" %>  </div>
               <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-              <%= link_to "EDIT", edit_space_desk_path(@space, desk), class:"btn btn-primary btn-lg" %>
-              <%= link_to 'REMOVE', space_desk_path(@space,desk), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-lg" %>
+              <%= link_to "EDIT", edit_space_desk_path(@space, desk), class:"btn btn-primary" %>
+              <%= link_to 'REMOVE', space_desk_path(@space,desk), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
 
               <% end %>
 						</div>

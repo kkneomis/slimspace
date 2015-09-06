@@ -19,22 +19,22 @@
 <div class="col-md-7 booked">
   <br><br>
 <% @bookings.order('created_at DESC').each do |b| %>  
-
+  <% @space= Space.find(b.space_id) %>
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <%= link_to cl_image_tag(b.desk.image_url(:mini), width:"100%"), Space.find(b.space_id) %>
+        <%= link_to cl_image_tag(b.desk.image_url(:mini), width:"100%"), @space %>
       </div>
 
       <div class="col-md-3">
 
-            <b><a href="#" class="alert-link"> <%= Space.find(b.space_id).name %>:<br></a> <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours</b>
+        <b><a href="#" class="alert-link"> <%= b.desk.name %> at <%= @space.name %>:<br></a> <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours</b>
         
         <p>
             <b>Address:</b>
-            <%= Space.find(b.space_id).address %>, <%= Space.find(b.space_id).city %>, <%= Space.find(b.space_id).state %> <br>
+          <%=@space.address %>, <%= @space.city %>, <%= @space.state %> <br>
           </p>
-            
+        <%= link_to 'DELETE', b , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-lg" %>
             </div>
      
      </div> 
