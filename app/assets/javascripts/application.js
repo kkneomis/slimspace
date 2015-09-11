@@ -32,5 +32,5 @@
 //= require jquery.datetimepicker.js
 //= require jquery.raty
 //= require ratyrate
-
+//= require bootstrap-switch
 //= require_tree .

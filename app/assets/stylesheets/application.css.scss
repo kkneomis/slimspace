@@ -12,9 +12,10 @@
  *
 *= require fullcalendar
 *= require bootstrap-datepicker
+*= require bootstrap3-switch
  *= require_tree .
  *= require_self
  */
 @import "bootstrap-sprockets";
-
+/* for bootstrap3 */
 

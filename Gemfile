@@ -27,7 +27,7 @@ gem 'devise'
 gem 'fullcalendar-rails'
 
 gem 'bootstrap-datepicker-rails'
-
+gem "bootstrap-switch-rails"
 
 
 gem 'momentjs-rails'

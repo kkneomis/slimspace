@@ -6,6 +6,12 @@ class SpacesController < ApplicationController
   
   def show
     @space = Space.find(params[:id])  
+    if current_user == @space.user  
+      @desks = @space.desks.where(private: false)
+    else
+      @desks= @space.desks.all
+    end
+  
   end
   
 
