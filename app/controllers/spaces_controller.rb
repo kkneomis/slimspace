@@ -3,7 +3,7 @@ class SpacesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
-  
+  #privacy
   def show
     @space = Space.find(params[:id])  
     if current_user == @space.user  
