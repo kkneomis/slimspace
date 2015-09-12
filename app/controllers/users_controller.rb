@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :manage]
+  before_action :set_user, only: [:show]
     
   def show
     @spaces = Space.where(user_id: @user.id)
@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
   
   def manage
-    @spaces = Space.where(user_id: current_user.id)
+    @user = current_user
+    @bookings = Booking.where(user_id: current_user.id)
   end
   
  private

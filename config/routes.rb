@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   
   resources :spaces
 
-  resources :bookings, :only => [:index]
-  #resources :desks, :only => [:destroy]
-  
-
-  
+     resources :bookings, :only => [:index, :approve] do
+        member do
+          put "confirm", to: "bookings#approve"
+        end
+      end 
   resources :spaces do
     resources :desks do
       resources :bookings

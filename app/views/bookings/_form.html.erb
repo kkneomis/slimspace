@@ -12,7 +12,7 @@
 		</div>
 		<div class="property-info mrgt6x">
 			<div class="property-box border-hover">
-        <div class="appartment-img"><%= cl_image_tag(@desk.image_url(:thumbnail)) %>
+        <div class="appartment-img"><%= cl_image_tag(@desk.image_url(:thumbnail), width:"100%") %>
           <div class="room-price"><span>$<%= @desk.price %><sup>/hour</sup></span></div>
 					<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
 				</div>

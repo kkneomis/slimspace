@@ -73,7 +73,10 @@
               <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
               <%= link_to "EDIT", edit_space_desk_path(@space, desk), class:"btn btn-primary" %>
               <%= link_to 'REMOVE', [@space, desk] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
-
+                     
+                  <% if desk.private == true %>
+                      <i class="fa fa-eye-slash"></i>
+                  <% end %>
               <% end %>
 						</div>
 						<ul class="home2 appartment-detail">

@@ -60,8 +60,18 @@ $( document ).ready(function() {
 			}
   });
   
-  $('#mycalendar').fullCalendar({
+  $('#bookedcalendar').fullCalendar({
     events: '/bookings/booked.json',
+    eventLimit: true, 
+    header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			}
+  });
+  
+  $('#manage_calendar').fullCalendar({
+    events: '/manage/booked.json',
     eventLimit: true, 
     header: {
 				left: 'prev,next today',

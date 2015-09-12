@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="col-md-5">
-    <div id='mycalendar'></div>
+    <div id='bookedcalendar'></div>
   </div>
 
 <div class="col-md-7 booked">
@@ -34,7 +34,16 @@
             <b>Address:</b>
           <%=@space.address %>, <%= @space.city %>, <%= @space.state %> <br>
           </p>
-        <%= link_to 'DELETE', [@space, b.desk , b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
+        <% if b.approved == nil %>  
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Under review...
+            </div>
+          </div>
+
+
+        
+        <% end %>
+        <%= link_to 'CANCEL', [@space, b.desk , b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
             </div>
      
      </div> 

@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy, :approve]
+  before_action :check_landlord, only: [:approve]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   # GET /bookings
   # GET /bookings.json
@@ -20,15 +21,19 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @desk = Desk.find(params[:desk_id])
     @space = Space.find(params[:space_id])
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @booking }
     end
-    
-    
   end
 
+  def approve
+    @booking.update_attributes(approved: true)
+
+    respond_to do |format|
+      format.html { redirect_to manage_user_path, notice: 'This booking has been confirmed!' }
+    end
+  end
   # GET /bookings/1/edit
   def edit
   end
@@ -42,6 +47,8 @@ class BookingsController < ApplicationController
     @desk = Desk.find(params[:desk_id])
     @booking.space_id = @space.id
     @booking.user_id = current_user.id
+    @booking.tenant_id = current_user.id
+    @booking.landlord_id = @space.user_id
     @booking.desk_id = @desk.id 
 
     respond_to do |format|
@@ -89,6 +96,13 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:start, :end, :user_id, :space_id, :start_time, :end_time, :length, :desk_id)
+      params.require(:booking).permit(:start, :end, :user_id, :space_id, :start_time, :end_time, :length, :desk_id, :landlord_id, :tenant_id, :approved)
     end
+  
+  def check_landlord
+    if current_user != @booking.landlord
+      redirect_to root_path, notice: 'You cannot approve this booking'
+    end
+  end
+  
 end

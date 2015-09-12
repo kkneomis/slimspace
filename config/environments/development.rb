@@ -40,4 +40,14 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
    config.action_mailer.default_url_options = { host: 'http://ruby-on-rails-118918.nitrousapp.com:3000', port: 3000 }
+  
+   config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "slimspace.io",
+  :user_name => "postmaster@slimspace.io",
+  :password => "06ac6b87657b5e67baee85e4a6b7f51d "
+}
 end
