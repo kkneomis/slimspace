@@ -48,6 +48,6 @@ config.action_mailer.smtp_settings = {
   :port => 587,
   :domain => "slimspace.io",
   :user_name => "postmaster@slimspace.io",
-  :password => "06ac6b87657b5e67baee85e4a6b7f51d "
+  :password => "06ac6b87657b5e67baee85e4a6b7f51d"
 }
 end
