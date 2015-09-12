@@ -6,12 +6,13 @@ class SpacesController < ApplicationController
   #privacy
   def show
     @space = Space.find(params[:id])  
-    if current_user == @space.user  
+     @owner = User.find(@space.user_id)
+    if @owner != current_user
       @desks = @space.desks.where(private: false)
     else
       @desks= @space.desks.all
     end
-  
+
   end
   
 
