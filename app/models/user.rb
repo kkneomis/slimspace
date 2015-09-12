@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
   after_create :send_welcome_mail
 
   def send_welcome_mail
-    ModelMailer.new_record_notification(@greeting).deliver
+    MailGun.sign_up_success(self.email).deliver
  end
 end
