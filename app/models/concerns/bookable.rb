@@ -2,7 +2,7 @@ module Bookable
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :desk
+    belongs_to :space
 
     validates :start_time, presence: true 
     validates :length, presence: true, numericality: { greater_than: 0 }
@@ -55,22 +55,22 @@ module Bookable
 
   def overlaps
     overlapping_bookings = [ 
-      desk.bookings.end_during(start_time, end_time),
-      desk.bookings.start_during(start_time, end_time),
-      desk.bookings.happening_during(start_time, end_time),
-      desk.bookings.enveloping(start_time, end_time),
-      desk.bookings.identical(start_time, end_time)
+      space.bookings.end_during(start_time, end_time),
+      space.bookings.start_during(start_time, end_time),
+      space.bookings.happening_during(start_time, end_time),
+      space.bookings.enveloping(start_time, end_time),
+      space.bookings.identical(start_time, end_time)
     ].flatten
 
     overlapping_bookings.delete self
     if overlapping_bookings.any?
-      errors.add(:base, 'Slot has already been booked')
+      errors.add(:base, 'This slot has already been booked')
     end
   end
 
   def start_date_cannot_be_in_the_past
-    if start_time && start_time < DateTime.now + (15.minutes)
-      errors.add(:start_time, 'must be at least 15 minutes from present time')
+    if start_time && start_time < DateTime.now + (30.minutes)
+      errors.add(:start_time, 'You must book your space at least 30 minutes in advance')
     end
   end
 

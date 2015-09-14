@@ -9,6 +9,7 @@ class SpacesController < ApplicationController
      @owner = User.find(@space.user_id)
     if @owner != current_user
       @desks = @space.desks.where(private: false)
+      @subspaces = @space.children
     else
       @desks= @space.desks.all
     end
@@ -19,15 +20,18 @@ class SpacesController < ApplicationController
   
   def index
     @spaces = Space.order('created_at DESC')
+    
   end
 
   def new
     @space = Space.new
+    @parent= params[:parent]
   end
 
   def create
     @space = Space.new(space_params)
     @space.user_id = current_user.id
+    
    respond_to do |format| 
     if @space.save
       format.html { redirect_to @space, notice: 'Space was successfully updated.' }
@@ -68,7 +72,7 @@ class SpacesController < ApplicationController
   
 
     def space_params
-      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image)
+      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level)
     end
   
   def check_user

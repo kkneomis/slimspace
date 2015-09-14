@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @desk = Desk.find(params[:desk_id])
     @space = Space.find(params[:space_id])
     respond_to do |format|
       format.html # show.html.erb
@@ -41,15 +40,12 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    
     @booking = Booking.new(booking_params)
     @space = Space.find(params[:space_id])
-    @desk = Desk.find(params[:desk_id])
     @booking.space_id = @space.id
     @booking.user_id = current_user.id
     @booking.tenant_id = current_user.id
     @booking.landlord_id = @space.user_id
-    @booking.desk_id = @desk.id 
 
     respond_to do |format|
       if @booking.save

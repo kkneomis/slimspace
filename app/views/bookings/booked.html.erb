@@ -23,12 +23,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <%= link_to cl_image_tag(b.desk.image_url(:mini), width:"100%"), @space %>
+        <%= link_to cl_image_tag(@space.image_url(:mini), width:"100%"), @space %>
       </div>
 
       <div class="col-md-3">
 
-        <b><a href="#" class="alert-link"> <%= b.desk.name %> at <%= @space.name %>:<br></a> <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours</b>
+        <b><a href="#" class="alert-link"> <%= @space.name %><br></a> <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours</b>
         
         <p>
             <b>Address:</b>
@@ -43,7 +43,7 @@
 
         
         <% end %>
-        <%= link_to 'CANCEL', [@space, b.desk , b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
+        <%= link_to 'CANCEL', [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
             </div>
      
      </div> 

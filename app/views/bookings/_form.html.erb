@@ -1,7 +1,7 @@
 
 
 
-<%= form_for([@space, @desk, @booking]) do |f| %>
+<%= form_for([@space, @booking]) do |f| %>
 <section>
 <div class="container">
 <div class="booking-section mrgb7x">
@@ -12,16 +12,16 @@
 		</div>
 		<div class="property-info mrgt6x">
 			<div class="property-box border-hover">
-        <div class="appartment-img"><%= cl_image_tag(@desk.image_url(:thumbnail), width:"100%") %>
-          <div class="room-price"><span>$<%= @desk.price %><sup>/hour</sup></span></div>
+        <div class="appartment-img"><%= cl_image_tag(@space.image_url(:thumbnail), width:"100%") %>
+          <div class="room-price"><span>$<%# @desk.price %><sup>/hour</sup></span></div>
 					<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
 				</div>
 				<div class="property-text">
 					<div class="resort-name">
-            <h4><%= @desk.name %></h4>
-              <li><%= rating_for @desk, "desk", :disable_after_rate => true %></li>
+            <h4><%= @space.name %></h4>
+            <li><%= rating_for @space, "space", :disable_after_rate => true %></li>
 						
-            <p><%= @desk.space.city %>, <%= @desk.space.state %> </p>
+            <p><%= @space.city %>, <%= @space.state %> </p>
 					</div>
 				</div>
 				

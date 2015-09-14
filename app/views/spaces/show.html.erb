@@ -5,7 +5,12 @@
 			<h4 class="page-name"><%= @space.city %></h4>
       <div class="tag-bar"> <a href="#"><span><%= @space.state %></span></a> </div>
 			<ul class="breadcrumb">
-				<li><a href="#">Spaces</a></li>
+        <li>
+          <% if @space.parent_id != nil %>  
+          <%= link_to @space.parent.name, @space.parent %>
+          <% end %>
+        
+        </li>
 				<li class="active"><%= @space.name %></li>
 			</ul>
 		</div>
@@ -33,9 +38,9 @@
           </p>
           <p><%= @space.description %></p>
           <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
-          
+          <div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>  </div>
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-           <%= link_to "ADD A DESK", new_space_desk_path(@space), class:"btn btn-primary btn-lg" %>
+          <%= link_to "ADD A SUBSPACE", new_space_path(parent: @space), class:"btn btn-primary btn-lg" %>
           <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success " %>
            <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
           <% end %>
@@ -50,38 +55,34 @@
   
 </section>
 
+
+
+
+
+<% @subspaces= Space.where(parent_id: @space.id) %>
 <section>
 	<div class="container" >
 		<div class="featured-properties animated out" >
 			<div class="section-heading mrgt7x mrgb7x">
 				<h3><span>AVAILABLE SEATS IN THIS LOCATION</span></h3>
 			</div>
-      <% @desks.order('created_at DESC').each_slice(3) do |desk_group| %>
+          <% @subspaces.order('created_at DESC').each_slice(3) do |subspace_group| %>
 			<div class="section-detail">
-        <% desk_group.each do |desk| %>
+        <% subspace_group.each do |subspace| %>
         <div class="col-md-4 col-sm-6">
 					<div class="home2 property-box border-hover animated out" >
-            <div class="appartment-img"><%= cl_image_tag(desk.image_url(:thumbnail), width:"100%") %>
-              <div class="room-price"><span>$<%= desk.price %><sup>/hour</sup></span></div>
+            <div class="appartment-img"><%= link_to cl_image_tag(subspace.image_url(:thumbnail), width:"100%"), subspace %>
+              <div class="room-price"><span>$<%=  %><sup>/hour</sup></span></div>
 						</div>
 						<div class="property-text">
 							<div class="resort-name">
-								<h4><%= desk.name %></h4><br>
-								<p><%= desk.description %></p>
+                
+                <h4><%= subspace.name %></h4><br>
+                <p><%= subspace.description %></p>
 							</div>
-							<div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_desk_booking_path(@space, desk), class:"more-detail" %>  </div>
-              <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-              <%= link_to "EDIT", edit_space_desk_path(@space, desk), class:"btn btn-primary" %>
-              <%= link_to 'REMOVE', [@space, desk] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
-                     
-                  <% if desk.private == true %>
-                      <i class="fa fa-eye-slash"></i>
-                  <% end %>
-              <% end %>
+							
 						</div>
-						<ul class="home2 appartment-detail">
-              <li><%= rating_for desk, "desk", :disable_after_rate => true %></li>
-						</ul>
+						
 					</div>
 				</div>
         
@@ -91,4 +92,3 @@
 		</div>
 	</div>
 </section>
-
