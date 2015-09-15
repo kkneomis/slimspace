@@ -2,8 +2,11 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
-
+  before_filter :check_privacy, only: [:show]
   #privacy
+  
+  
+  
   def show
     @space = Space.find(params[:id])  
      @owner = User.find(@space.user_id)
@@ -19,7 +22,7 @@ class SpacesController < ApplicationController
 
   
   def index
-    @spaces = Space.order('created_at DESC')
+    @spaces = Space.where(parent_id: nil).order('created_at DESC')
     
   end
 
@@ -72,13 +75,19 @@ class SpacesController < ApplicationController
   
 
     def space_params
-      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level)
+      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level, :can_book, :private, :scale)
     end
   
-  def check_user
-    if current_user.id != @space.user_id
-      redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
+      def check_user
+        if current_user.id != @space.user_id
+          redirect_to root_url, alert: "Sorry, this Space belongs to someone else"\
         end
-    end
+      end
+  
+      def check_privacy
+        if (@space.private == true) && ((!user_signed_in?) || (current_user.id != @space.user_id))
+          redirect_to root_url, alert: "Sorry, this Space is private"\
+        end
+      end
   
 end

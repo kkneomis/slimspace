@@ -34,11 +34,14 @@
 					<p>
             <b>Address:</b>
             <%= @space.address %>, <%= @space.city %>, <%= @space.state %> <br>
-             <b><%= @space.desks.count %> seats in this space</b>
+            <b><%= @space.children.count %> seats in this space</b>
           </p>
           <p><%= @space.description %></p>
-          <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
-          <div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>  </div>
+           <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
+          <% if @space.can_book == true %>
+             <div class="detail-btn mrgt4x mrgb3x"><%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>  </div>
+          <% end %>
+          
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
           <%= link_to "ADD A SUBSPACE", new_space_path(parent: @space), class:"btn btn-primary btn-lg" %>
           <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success " %>
@@ -72,7 +75,7 @@
         <div class="col-md-4 col-sm-6">
 					<div class="home2 property-box border-hover animated out" >
             <div class="appartment-img"><%= link_to cl_image_tag(subspace.image_url(:thumbnail), width:"100%"), subspace %>
-              <div class="room-price"><span>$<%=  %><sup>/hour</sup></span></div>
+              <div class="room-price"><span>$<%= subspace.price  %><sup>/<%= subspace.scale %></sup></span></div>
 						</div>
 						<div class="property-text">
 							<div class="resort-name">

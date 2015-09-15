@@ -25,6 +25,18 @@
   <%= f.text_field :city, placeholder: 'City', class:"form-control"%>
     
   </div>
+  <div class="form-group">
+   <div class="row"> 
+    <div class="col-md-6">
+      <%= f.label :price %>
+      <%= f.text_field :price, placeholder: 'Price', class:"form-control"%>
+    </div>
+    <div class="col-md-6">
+      <%= f.label "Per" %>
+      <%= f.select :scale, ["hour", "day", "week", "month", "year" ], class:"form-control"%>
+    </div>
+    </div>
+  </div>
   
    <div class="form-group">
      <%= f.label :state %>
@@ -40,9 +52,19 @@
   
   <div class="field">
     <% if @space.parent_id == nil %>
-      <%= f.number_field :parent_id, :value => @parent %>
+    <%= f.hidden_field :parent_id, :value => @parent %>
     <% end %>
   </div>
+  
+  <div class="form-group">
+  <%= f.label "Is this unit private?" %><br>
+  <%= f.check_box :private, id:"box", :data => {'on-text'=>'YES', 'off-text'=>'NO' } %>
+</div>
+  
+  <div class="form-group">
+    <%= f.label "Can other users book this unit?" %><br>
+  <%= f.check_box :can_book, id:"box", :data => {'on-text'=>'YES', 'off-text'=>'NO' } %>
+</div>
   
    <div class="form-group">
      <%= f.label "Image" %>
@@ -52,7 +74,7 @@
   
  
   <div class="form-group">
-    <%= f.submit 'Submit', class:"btn btn-primary btn-lg"%>
+    <%= f.submit 'Submit', class:"btn btn-primary btn-block"%>
   </div>
   
 <% end %>

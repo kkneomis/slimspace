@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   
   def manage
     @user = current_user
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.where(landlord_id: current_user.id)
   end
   
  private
