@@ -16,7 +16,6 @@ class SpacesController < ApplicationController
     else
       @desks= @space.desks.all
     end
-
   end
   
 

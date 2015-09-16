@@ -50,6 +50,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @space, notice: 'Booking was successfully created.' }
+        MailGun.approve_deny(@booking.landlord.email).deliver
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }

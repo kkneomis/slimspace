@@ -71,7 +71,7 @@ $( document ).ready(function() {
   });
   
   $('#manage_calendar').fullCalendar({
-    events: '/Users/manage.json',
+    events: '/users/:id/manage.json',
     eventLimit: true, 
     header: {
 				left: 'prev,next today',

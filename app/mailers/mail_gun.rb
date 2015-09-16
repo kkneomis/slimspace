@@ -7,4 +7,5 @@ class MailGun < ApplicationMailer
   def approve_deny(space,booking,user,email)
     mail to: email, subject:"You have a new request"  
   end
+  
 end
