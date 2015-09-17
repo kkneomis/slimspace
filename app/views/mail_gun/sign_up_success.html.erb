@@ -1,5 +1,24 @@
-<h1>MailGun#sign_up_success</h1>
+<style type="text/css">
+  #message{
+    border: solid 5px #FF6600;
+    text-align:center;
+    border-radius:15px;
+  }
+   h1, h3, p {
+    color: blue;
+    font-family: "Comic Sans", Cursive, Georgia, Sans-serif;
+  }
+</style>
+<div class= "container" id="message">
+<h1>Welcome to SlimSpace</h1>
+  <p>We are excited to support your needs to list and/or find the perfect workspace<br/></p>
 
-<p>
-  <%= @greeting %>, find me in app/views/mail_gun/sign_up_success.html.erb
-</p>
+  <p>This message is in response to your recent registry with SlimSpace.io, and you may view your profile by clicking the button below</p>
+  <button class="btn btn-success"><%= link_to "Go to SlimSpace", root_path%></button>
+
+  <p>If you believe this registration to be made in error please contact us at</p><br/>
+  <address><a href="mailto:registration@slimspace.io">registration@slimspace.io</a></address><br/>
+
+<h3>Thank you and we look forward to being your first stop when listing and looking for your perfect workspace</h3>
+  <p>Made with<span><i class="fa fa-heart-o"></i></span>at BizHack DC | Copyright Slimspace 2015</p>
+</div>
