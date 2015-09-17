@@ -16,7 +16,7 @@
 		</div>
 	</div>
 </section>
-
+<!----------------------------------Main Space----------------------------------->
 <section>
 	<div class="container">
 		<div class="property-single">
@@ -43,7 +43,7 @@
           <% end %>
           
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-          <%= link_to "ADD A SUBSPACE", new_space_path(parent: @space), class:"btn btn-primary btn-lg" %>
+          <%= link_to "ADD A SUBSPACE", new_space_path(parent: @space), class:"btn btn-primary" %>
           <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success " %>
            <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
           <% end %>
@@ -59,16 +59,19 @@
 </section>
 
 
-
+<!----------------------------------Subspaces---------------------------------->
 
 
 <% @subspaces= Space.where(parent_id: @space.id) %>
 <section>
 	<div class="container" >
 		<div class="featured-properties animated out" >
-			<div class="section-heading mrgt7x mrgb7x">
-				<h3><span>AVAILABLE SEATS IN THIS LOCATION</span></h3>
+      <% if @subspaces.count > 0 %>	
+        <div class="section-heading mrgt7x mrgb7x">
+				<h3><span>SUBSPACES IN THIS LOCATION</span></h3>
 			</div>
+      <% end %>
+      
           <% @subspaces.order('created_at DESC').each_slice(3) do |subspace_group| %>
 			<div class="section-detail">
         <% subspace_group.each do |subspace| %>
@@ -83,9 +86,14 @@
                 <h4><%= subspace.name %></h4><br>
                 <p><%= subspace.description %></p>
 							</div>
-							
+              <% if subspace.can_book == true %>
+							  <div class="property-price">
+                  <h1><span><sup>$</sup><%= subspace.price %><sup>/<%= subspace.scale %></sup></span></h1>
+								</div>
+              <% end %>
 						</div>
-						
+								
+								
 					</div>
 				</div>
         
