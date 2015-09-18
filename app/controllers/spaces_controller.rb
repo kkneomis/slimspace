@@ -74,7 +74,7 @@ class SpacesController < ApplicationController
   
 
     def space_params
-      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level, :can_book, :private, :scale)
+      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level, :can_book, :private, :scale, :confirm)
     end
   
       def check_user

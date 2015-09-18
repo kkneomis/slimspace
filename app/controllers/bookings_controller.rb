@@ -28,9 +28,10 @@ class BookingsController < ApplicationController
 
   def approve
     @booking.update_attributes(approved: true)
-
+    MailGun.success(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
     respond_to do |format|
       format.html { redirect_to manage_user_path, notice: 'This booking has been confirmed!' }
+      MailGun.approve_deny(@space, @booking, @booking.landlord, @booking.landlord.email).deliver
     end
   end
   # GET /bookings/1/edit
@@ -50,7 +51,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @space, notice: 'Booking was successfully created.' }
-        MailGun.approve_deny(@space, @booking, @booking.landlord, @booking.landlord.email,).deliver
+        MailGun.approve_deny(@space, @booking, @booking.landlord, @booking.landlord.email).deliver
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -73,7 +74,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  
+
 
   # DELETE /bookings/1
   # DELETE /bookings/1.json
@@ -81,6 +82,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     respond_to do |format|
       format.html { redirect_to bookings_booked_path, notice: 'Booking was successfully destroyed.' }
+      MailGun.failure(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
       format.json { head :no_content }
     end
   end
@@ -95,11 +97,11 @@ class BookingsController < ApplicationController
     def booking_params
       params.require(:booking).permit(:start, :end, :user_id, :space_id, :start_time, :end_time, :length, :desk_id, :landlord_id, :tenant_id, :approved)
     end
-  
+
   def check_landlord
     if current_user != @booking.landlord
       redirect_to root_path, notice: 'You cannot approve this booking'
     end
   end
-  
+
 end

@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
    def default_url 
-     "http://res.cloudinary.com/bisonshare/image/upload/v1440349106/t2e3vvn0fl2ncp4ejcfb.jpg"
+     "http://res.cloudinary.com/slimspace/image/upload/v1442614484/office-170638_1280_cj2ovp.jpg"
    end
   
 end

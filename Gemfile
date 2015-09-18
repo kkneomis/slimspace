@@ -30,7 +30,7 @@ gem 'fullcalendar-rails'
 gem 'bootstrap-datepicker-rails'
 gem "bootstrap-switch-rails"
 
-gem 'rest_client'
+#gem 'rest_client'
 gem 'momentjs-rails'
 gem 'carrierwave'
 # Use ActiveModel has_secure_password

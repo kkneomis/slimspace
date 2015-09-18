@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: bisonshare
-  api_key: '265537665961479'
-  api_secret: wZBiVoQeojDkEYYsd-JxXVj_73Q
+  cloud_name: slimspace
+  api_key: '273349885843724'
+  api_secret: sEeqMgdHySIqGTwp_mj-qKsr62Y
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: bisonshare
-  api_key: '265537665961479'
-  api_secret: wZBiVoQeojDkEYYsd-JxXVj_73Q
+  cloud_name: slimspace
+  api_key: '273349885843724'
+  api_secret: sEeqMgdHySIqGTwp_mj-qKsr62Y
   enhance_image_tag: true
   static_image_support: true
 test:
-  cloud_name: bisonshare
-  api_key: '265537665961479'
-  api_secret: wZBiVoQeojDkEYYsd-JxXVj_73Q
+  cloud_name: slimspace
+  api_key: '273349885843724'
+  api_secret: sEeqMgdHySIqGTwp_mj-qKsr62Y
   enhance_image_tag: true
   static_image_support: false
