@@ -12,7 +12,7 @@ class MailGun < ApplicationMailer
     mail to: email, subject:"You have a new request"
   end
 
-  def reservation_destroyed(space,booking,user,email)
+  def reservation_canceled(space,booking,user,email)
     @space= space
     @booking= booking
     @user= user

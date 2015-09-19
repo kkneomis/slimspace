@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
 
   def approve
     @booking.update_attributes(approved: true)
-    MailGun.success(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
+    MailGun.reservation_success(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
     respond_to do |format|
       format.html { redirect_to manage_user_path, notice: 'This booking has been confirmed!' }
       MailGun.approve_deny(@space, @booking, @booking.landlord, @booking.landlord.email).deliver
@@ -47,7 +47,9 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     @booking.tenant_id = current_user.id
     @booking.landlord_id = @space.user_id
-
+    if @space.confirm == true
+      @booking.update_attributes(approved: true)
+    end
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @space, notice: 'Booking was successfully created.' }
@@ -82,7 +84,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     respond_to do |format|
       format.html { redirect_to bookings_booked_path, notice: 'Booking was successfully destroyed.' }
-      MailGun.failure(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
+      MailGun.reservation_canceled(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
       format.json { head :no_content }
     end
   end
