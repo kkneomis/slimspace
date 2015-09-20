@@ -14,10 +14,11 @@
     <%= f.text_field :name, placeholder: 'Name' , class:"form-control"%>
   </div>
   
-  <% if @space == nil %>
   <div class="field">
     <%= f.hidden_field :parent_id, :value => @parent %>
   </div>
+  <% if @space == nil %>
+  
   
   <div class="form-group">
     <%= f.label :address %>
