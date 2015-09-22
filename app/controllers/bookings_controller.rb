@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
     MailGun.reservation_success(@booking.space, @booking, @booking.landlord, @booking.landlord.emails).deliver
     respond_to do |format|
       format.html { redirect_to manage_user_path, notice: 'This booking has been confirmed!' }
-      MailGun.approve_deny(@space, @booking, @booking.landlord, @booking.landlord.email).deliver
+      MailGun.reservation_success(@space, @booking, @booking.landlord, @booking.landlord.email).deliver
     end
   end
   # GET /bookings/1/edit
