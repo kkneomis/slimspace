@@ -1,4 +1,3 @@
-
 <div class="top-bar">
 	<div class="container">
 		<div class="left-bar">
@@ -50,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <div class="logo"><a href="/"><img src="http://res.cloudinary.com/bisonshare/image/upload/v1439125099/slimspace_cyeabn.png" height="50" alt="#" /> </a></div>
+        <div class="logo"><a href="/"><img src="http://res.cloudinary.com/bisonshare/image/upload/v1445482865/SlimSpace_xwnwhg.png" height="75" alt="#" /> </a></div>
 			</div>
 			<div class="menu">
 				<nav class="navbar navbar-default">
@@ -60,15 +59,13 @@
               <li><%= link_to "VIEW SPACES", spaces_path %></li>
               <li><a href="https://docs.google.com/forms/d/1EnNpwE62veTvk5xmgFkJZEtAOAPNZsVAULhwZ-LlhrU/viewform" target="_blank" > FEEDBACK</a></li>
              <% if user_signed_in? %> 
-              
-        
-              <li><%= link_to "MY PROFILE", current_user %></li>
-              <li><%= link_to "MY BOOKINGS", bookings_booked_path %></li>
-              <li><%= link_to "ADD A SPACE", new_space_path %></li>
-              <li><%= link_to "MANAGE", manage_user_path(current_user) %></li>
+                <li><%= link_to "MY PROFILE", current_user %></li>
+                <li><%= link_to "MY BOOKINGS", bookings_booked_path %></li>
+                <li><%= link_to "ADD A SPACE", new_space_path %></li>
+                <li><%= link_to "MANAGE", manage_user_path(current_user) %></li>
               <% end %> 
              
-				
+				    </ul>
 					</div>
 				</nav>
 			</div>

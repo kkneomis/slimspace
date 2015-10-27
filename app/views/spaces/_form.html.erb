@@ -11,31 +11,38 @@
 
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: 'Name' , class:"form-control"%>
+    <%= f.text_field :name, placeholder: 'Name ex: Office A' , class:"form-control"%>
   </div>
   
   <div class="field">
     <%= f.hidden_field :parent_id, :value => @parent %>
   </div>
-  <% if @space == nil %>
   
   
- <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address, placeholder: 'Address', class:"form-control"%>
-  </div>
+  <% if @parent == nil %>
+  
+  
+     <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address, placeholder: 'Address', class:"form-control"%>
+      </div>
 
 
-  <div class="form-group">
-    <%= f.label :city %>
-  <%= f.text_field :city, placeholder: 'City', class:"form-control"%>
-  </div>
-  
-   <div class="form-group">
-     <%= f.label :state %>
-  <%= f.text_field :state, placeholder: 'State', class:"form-control"%>
-    
-  </div>
+      <div class="form-group">
+        <%= f.label :city %>
+      <%= f.text_field :city, placeholder: 'City', class:"form-control"%>
+      </div>
+
+       <div class="form-group">
+        <div class="col-md-6"> 
+         <%= f.label :state %>
+         <%= f.text_field :state, placeholder: 'State', class:"form-control"%>
+       </div> 
+         <div class="col-md-6"> 
+         <%= f.label :zip %>
+        <%= f.text_field :zip, placeholder: 'Zip-code', class:"form-control"%>
+        </div> 
+      </div>
  <% end %> 
  
   <div class="form-group">
