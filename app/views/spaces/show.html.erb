@@ -8,7 +8,7 @@
 			<ul class="breadcrumb">
         <li>
           <% if @space.parent_id != nil %>  
-            <%= link_to @space.parent.name, @space.parent %>
+          <%= link_to Space.find(@space.parent_id).name, Space.find(@space.parent_id) %>
           <% end %>
         </li>
 				<li class="active"><%= @space.name %></li>
@@ -34,15 +34,10 @@
 					<p><%= @space.description %></p>
             <% if @space.parent_id == nil %>
              <p>
-               <b>Address:</b>
-              <%= @space.address %>, <%= @space.city %>, <%= @space.state %> <br>
-              <b><%= @space.children.count %> subspaces in this space</b>
-             </p>
-            <% else %>
+     
+               <% end %>
             <p>
-              <b>Address:</b>
-              <%= @space.parent.address %>, <%= @space.parent.city %>, <%= @space.parent.state %> 
-            </p>
+            
                 <% if @space.can_book==true %>
                   <div class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -53,7 +48,7 @@
                     </div>
                   </div>
                 <% end %>
-            <% end %>
+
           
           
           <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
