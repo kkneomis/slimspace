@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918232826) do
+ActiveRecord::Schema.define(version: 20160229201612) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20150918232826) do
     t.integer  "space_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.datetime "start_time"
-    t.integer  "length"
     t.datetime "end_time"
     t.integer  "desk_id"
     t.integer  "tenant_id"
     t.integer  "landlord_id"
     t.boolean  "approved"
+    t.datetime "start_time"
+    t.integer  "length"
   end
 
   create_table "desks", force: :cascade do |t|

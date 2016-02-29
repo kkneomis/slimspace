@@ -38,7 +38,7 @@
                <% end %>
             <p>
             
-                <% if @space.can_book==true %>
+
                   <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                       <div class="property-price">
@@ -46,14 +46,12 @@
                         <div class="detail-btn mrgt4x mrgb3x text-center"><%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>  </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
+
 
           
           
           <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-          <%= link_to "ADD A SUBSPACE", new_space_path(parent: @space), class:"btn btn-primary" %>
           <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success " %>
            <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
           <% end %>
@@ -69,47 +67,3 @@
 </section>
 
 
-<!----------------------------------Subspaces---------------------------------->
-
-
-<% @subspaces= Space.where(parent_id: @space.id) %>
-<section>
-	<div class="container" >
-		<div class="featured-properties animated out" >
-      <% if @subspaces.count > 0 %>	
-        <div class="section-heading mrgt7x mrgb7x">
-				<h3><span>SUBSPACES IN THIS LOCATION</span></h3>
-			</div>
-      <% end %>
-      
-          <% @subspaces.order('created_at DESC').each_slice(3) do |subspace_group| %>
-			<div class="section-detail">
-        <% subspace_group.each do |subspace| %>
-        <div class="col-md-4 col-sm-6">
-					<div class="home2 property-box border-hover animated out" >
-            <div class="appartment-img"><%= link_to cl_image_tag(subspace.image_url(:thumbnail), width:"100%"), subspace %>
-              <div class="room-price"><span>$<%= subspace.price  %><sup>/<%= subspace.scale %></sup></span></div>
-						</div>
-						<div class="property-text">
-							<div class="resort-name">
-                
-                <h4><%= subspace.name %></h4><br>
-                <p><%= subspace.description %></p>
-							</div>
-              <% if subspace.can_book == true %>
-							  <div class="property-price">
-                  <h1><span><sup>$</sup><%= subspace.price %><sup>/<%= subspace.scale %></sup></span></h1>
-								</div>
-              <% end %>
-						</div>
-								
-								
-					</div>
-				</div>
-        
-         <% end %>
-			</div>
-     <% end %>
-		</div>
-	</div>
-</section>
