@@ -6,8 +6,8 @@
       <div class="panel-heading">
         <div class="panel-title"><h4><%= @space.name %></h4> - <i class="ion-mic-b"></i> | <i class="ion-outlet"></i> | <i class="ion-wifi"></i>
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-              <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success" %>
-              <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
+              <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger button-striped button-full-striped btn-xs pull-right" %>
+              <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success button-striped button-full-striped btn-xs pull-right" %>
           <% end %>
         </div>
 
