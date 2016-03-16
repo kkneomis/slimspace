@@ -10,27 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require global-vendors
 //= require jquery_ujs
-
-//= require jquery.turbolinks
-// require bootstrap-sprockets
-//= require countTo
-//= require jquery-ui
-//= require jquery.appear
-//= require jquery.mixitup.min
-//= require jquery.photobox
-//= require jquery.themepunch.revolution
-//= require jquery.themepunch.tools.min
-//= require owl.carousel.min
-//= require revolution.slider
-//= require scripts
-//= require custom
-//= require moment
-//= require fullcalendar
-//= require bootstrap-datepicker
-//= require jquery.datetimepicker.js
-//= require jquery.raty
-//= require ratyrate
-//= require bootstrap-switch
+//= require colorpicker
+//= require turbolinks
+// require underscore
+// require gmaps/google
 //= require_tree .

@@ -12,7 +12,6 @@ class SpacesController < ApplicationController
      @owner = User.find(@space.user_id)
     if @owner != current_user
       @desks = @space.desks.where(private: false)
-      @subspaces = @space.children
     else
       @desks= @space.desks.all
     end

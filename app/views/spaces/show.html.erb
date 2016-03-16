@@ -1,69 +1,117 @@
+<%= render 'layouts/top' %>
 
-<section class="border-top">
-	<div class="container">
-		<div class="page-title mrgb6x mrgt6x clearfix">
-			<h4 class="page-name"><%= @space.city %></h4>
-      <div class="tag-bar"> <a href="#"><span><%= @space.state %></span></a> 
-    </div>
-			<ul class="breadcrumb">
-        <li>
-          <% if @space.parent_id != nil %>  
-          <%= link_to Space.find(@space.parent_id).name, Space.find(@space.parent_id) %>
-          <% end %>
-        </li>
-				<li class="active"><%= @space.name %></li>
-			</ul>
-		</div>
-	</div>
-</section>
-<!----------------------------------Main Space----------------------------------->
-<section>
-	<div class="container">
-		<div class="property-single">
-			<div class="col-md-6 no-padding col-sm-8 animated out" >
-        <div ><%= cl_image_tag(@space.image_url(:display), width:"100%")%>
-					<div class="image-detail">
-						<h5 class="place-name"><%= @space.name %>
-              <%= rating_for @space, "space", :disable_after_rate => true %></h5>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-sm-4 animated out" >
-				<div class="property-heading property-info">
-					<h4><span><%= @space.name %></span></h4>
-					<p><%= @space.description %></p>
-            <% if @space.parent_id == nil %>
-             <p>
-     
-               <% end %>
-            <p>
-            
-
-                  <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                      <div class="property-price">
-                        <h1><span><sup>$</sup><%= @space.price %><sup>/<%= @space.scale %></sup></span></h1>
-                        <div class="detail-btn mrgt4x mrgb3x text-center"><%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>  </div>
-                      </div>
-                    </div>
-
-
-          
-          
-          <p>This space is owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id) %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="panel-title"><h4><%= @space.name %></h4> - <i class="ion-mic-b"></i> | <i class="ion-outlet"></i> | <i class="ion-wifi"></i>
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-          <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success " %>
-           <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
+              <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success" %>
+              <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger" %>
           <% end %>
-				</div>
-        <div class="col-md-6 no-padding col-sm-6 animated out" >
+        </div>
 
-			</div>
-			</div>
-		</div>
-    
-	</div>
-  
-</section>
+      </div><!--.panel-heading-->
+      <div class="panel-body">
+
+        <div class="row example-row">
+          <div class="col-md-3">
+            <%= cl_image_tag(@space.image_url(:display), width:"100%")%>
+            <%= rating_for @space, "space", :disable_after_rate => true %>
+            <p><%= @space.address %><br /><%= @space.city %>, <%= @space.state %><br /><br />3rd Floor<br />202-555-1212<br /> </p>
+            <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>
+          </div><!--.col-md-3-->
+          <div class="col-md-9">
+
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active"><a href="#tab1_1" data-toggle="tab">Availability</a></li>
+              <li><a href="#tab1_2" data-toggle="tab">Bookings</a></li>
+              <li><a href="#tab1_3" data-toggle="tab">Photos</a></li>
+              <li><a href="#tab1_4" data-toggle="tab">Location</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1_1">
+                <div id="calendar"></div>
+              </div><!--.tab-pane-->
+              <div class="tab-pane" id="tab1_2">
+                <div class="row">
+                  <div class="col-md-12">
+                  <% @space.bookings.each do |f| %>
+                    <ul class="list-material">
+                      <li class="has-action-left has-action-right">
+                        <a href="#" class="visible">
+                          <div class="list-action-left">
+                            <i class="ion-calendar icon"></i>
+                          </div>
+                          <div class="list-content">
+                            <span class="title"><%= f.tenant.name %></span>
+                            <span class="caption">
+                              <%= f.start_time.strftime("Booked on %A %b/%d/%Y at %I:%M%p") %>
+                              for <%= f.length %> hour(s)
+                              <br />Main Conference Room</span>
+
+                          </div>
+                          <div class="list-action-right">
+                            <span class="top"><%= ((f.start_time - Time.now)/86400).round  %> days <br> from today</span>
+                            <i class="ion-android-done bottom"></i>
+                          </div>
+                        </a>
+                      </li>
+                  <% end %>
+                    </ul>
+                  </div><!--.col-->
+                </div>
+              </div><!--.tab-pane-->
+              <div class="tab-pane" id="tab1_3">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="card card-indigo card-image bg-image sample-bg-image4">
+
+                    </div><!--.card-->
+                  </div><!--.col-->
+                  <div class="col-md-6">
+                    <div class="card card-indigo card-image bg-image sample-bg-image4">
+
+                    </div><!--.card-->
+                  </div><!--.col-->
+                  <div class="col-md-6">
+                    <div class="card card-indigo card-image bg-image sample-bg-image4">
+
+                    </div><!--.card-->
+                  </div><!--.col-->
+                  <div class="col-md-6">
+                    <div class="card card-indigo card-image bg-image sample-bg-image4">
+
+                    </div><!--.card-->
+                  </div><!--.col-->
+                  <div class="col-md-6">
+                    <div class="card card-indigo card-image bg-image sample-bg-image4">
+
+                    </div><!--.card-->
+                  </div><!--.col-->
+                </div><!--.tab-pane-->
+              </div>
+              <div class="tab-pane" id="tab1_4">
+                <div class="panel">
+                  <div class="panel-heading">
+                    <div class="panel-title"><h4>BASIC</h4></div>
+                  </div><!--.panel-heading-->
+                  <div class="panel-body">
+                    <div style='width: 800px;'>
+                      <div id="map" style='width: 800px; height: 400px;'></div>
+                    </div>
+                  </div><!--.panel-body-->
+                </div><!--.panel-->
+              </div><!--.tab-pane-->
+            </div><!--.tab-content-->
+
+          </div><!--.col-md-9-->
+        </div><!--.row-->
+      </div>
+    </div><!--.panel-body-->
+  </div><!--.panel-->
+</div><!--.col-md-12-->
+
 
 
