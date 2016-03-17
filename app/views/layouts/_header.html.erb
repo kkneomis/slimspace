@@ -61,19 +61,28 @@
         <a href="/">Home</a>
       </li>
       <li>
-        <a href="javascript:;">Users</a>
+      <a href="javascript:;">Users</a>
         <ul class="child-menu">
-          <li><a href="/pages/login">Login</a></li>
-          <li><a href="/pages/signup">SignUp</a></li>
-          <li data-open-after="true"><a href="/pages/profile">User Profile</a></li>
+          <% if user_signed_in? %>
+              <li><%= link_to "My Profile", current_user %></li>
+              <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li data-open-after="true"><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
         </ul>
       </li>
+
       <li>
         <a href="javascript:;">Spaces</a>
         <ul class="child-menu">
-          <li><a href="/">List Spaces</a></li>
-          <li><a href="/pages/detail">Space detail</a></li>
-          <li><a href="/pages/booking">Booking Page</a></li>
+          <li><%= link_to "View Spaces", spaces_path %></li>
+          <% if user_signed_in? %>
+              <li><%= link_to "My Bookings", bookings_booked_path %></li>
+              <li><%= link_to "Add a Space", new_space_path %></li>
+              <li><%= link_to "Manage", manage_user_path(current_user) %></li>
+          <% end %>
         </ul>
       </li>
       <li>

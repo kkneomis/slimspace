@@ -11,9 +11,18 @@
 </head>
 
 
-<body >
+<body <% if @login == true %> class="bg-login printable" <% end %>>
+<% if @login == true %>
+  <style>
+    .content{
+      padding: 0 0 0 0px !important;
+    }
+  </style>
+<% end %>
 
+<% if @login != true %>
     <%= render 'layouts/header' %>
+<% end %>
 
 <div class="content">
   <%= yield %>

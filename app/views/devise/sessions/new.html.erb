@@ -1,30 +1,56 @@
+<% @login = true%>
 
-<div class="col-md-6 col-md-offset-3">
-<h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class:"form-control" %>
-  </div>
+    <%= devise_error_messages! %>
+<div class="login-screen">
+  <div class="panel-login blur-content">
+    <div class="panel-heading"><br /><a href="/">SlimSpace</a><br /></div><!--.panel-heading-->
 
-  <div class="form-group>
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-  </div>
+    <div id="pane-login" class="panel-body active">
+      <h2>Login to Dashboard</h2>
+      <div class="form-group">
+        <div class="inputer">
+          <div class="input-wrapper">
+            <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"Enter your email address" %>
+          </div>
+        </div>
+      </div><!--.form-group-->
+      <div class="form-group">
+        <div class="inputer">
+          <div class="input-wrapper">
+            <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Enter your password"%>
+          </div>
+        </div>
+      </div><!--.form-group-->
+      <div class="form-group">
+        <%= f.check_box :remember_me, class:"pull-left"%>
+        <%= f.label :remember_me %>
+      </div><!--.form-buttons-->
+      <div class="form-buttons clearfix">
+        <%= f.submit "Log in", class:"btn btn-white btn-block" %>
+      </div><!--.form-buttons-->
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in", class:"btn btn-primary btn-lg" %>
-  </div>
 <% end %>
-                         
-                         <%= render "devise/shared/links" %>
-</div>
+
+<br>
+      <ul class="">
+        <li><%= render "devise/shared/links" %></li>
+      </ul>
+    </div><!--#login.panel-body-->
+
+
+  </div><!--.blur-content-->
+</div><!--.login-screen-->
+
+<div class="bg-blur dark">
+  <div class="overlay"></div><!--.overlay-->
+</div><!--.bg-blur-->
+
+<svg version="1.1" xmlns='http://www.w3.org/2000/svg'>
+  <filter id='blur'>
+    <feGaussianBlur stdDeviation='7' />
+  </filter>
+</svg>
+
 

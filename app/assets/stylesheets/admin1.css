@@ -14965,6 +14965,9 @@ button.toast-close-button {
     .company-logo {
         display: block;
     }
+    .content .bg-login {
+        padding: 0 0px !important;
+    }
     .bg-login.printable .login-screen {
         background-color: indigo;
         box-shadow: none;

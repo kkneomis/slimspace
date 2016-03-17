@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   
   resources :spaces
-  get '/spaces/new/:parent' => 'space#new'
+  #get '/spaces/new/:parent' => 'space#new'
   
      resources :bookings, :only => [:index, :approve] do
         member do
           put "confirm", to: "bookings#approve"
         end
-      end 
+      end
   
   resources :spaces do
       resources :bookings
