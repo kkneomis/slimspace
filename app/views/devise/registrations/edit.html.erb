@@ -23,20 +23,27 @@
           <div class="form-group">
             <div class="inputer">
               <div class="input-wrapper">
-                <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Enter your password" %>
+                <%= f.password_field :current_password, autocomplete: "off", class:"form-control", placeholder:"Current password" %>
               </div>
             </div>
           </div><!--.form-group-->
+
           <div class="form-group">
             <div class="inputer">
               <div class="input-wrapper">
-                <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Enter your password again" %>
+                <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"New password" %>
               </div>
             </div>
           </div><!--.form-group-->
           <div class="form-group">
-            <label><input type="checkbox" name="remember" value="1"> I have read and agree to the term of use.</label>
-          </div>
+            <label> (leave blank if you don't want to change it)</label>
+            <div class="inputer">
+              <div class="input-wrapper">
+                <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Confirm your new password" %>
+              </div>
+            </div>
+          </div><!--.form-group-->
+
           <div class="form-buttons clearfix">
             <%= f.submit "Update",  class:"btn btn-success pull-right" %>
             <%= link_to "Cancel", root_path, class:"btn btn-white pull-left show-pane-login" %><br />
