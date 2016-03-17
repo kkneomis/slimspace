@@ -1,83 +1,6 @@
-<<<<<<< HEAD
-<% @login = true%>
 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="login-screen">
-      <div class="panel-login blur-content">
-        <div class="panel-heading"><br /><a href="/">SlimSpace</a><br /></div><!--.panel-heading-->
 
-        <div id="pane-login" class="panel-body active">
-          <h2>Create a New Account</h2>
-          <div class="form-group">
-            <div class="inputer">
-              <div class="input-wrapper">
-                <%= f.text_field :name, autofocus: true, class:"form-control", placeholder:"Enter your full name" %>
-              </div>
-            </div>
-          </div><!--.form-group-->
-          <div class="form-group">
-            <div class="inputer">
-              <div class="input-wrapper">
-                <%= f.email_field :email  , class:"form-control", placeholder:"Enter your email address" %>
-              </div>
-            </div>
-          </div><!--.form-group-->
-          <div class="form-group">
-            <div class="inputer">
-              <div class="input-wrapper">
-                <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Enter your password" %>
-              </div>
-            </div>
-          </div><!--.form-group-->
-          <div class="form-group">
-            <div class="inputer">
-              <div class="input-wrapper">
-                <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Enter your password again"%>
-              </div>
-            </div>
-          </div><!--.form-group-->
-
-          <div class="form-buttons clearfix">
-            <%= f.submit "SUBMIT",  class:"btn btn-white btn-block" %>
-          </div><!--.form-buttons-->
-
-          <div class="form-group">
-          <br>
-          <ul class="">
-            <li><%= render "devise/shared/links" %></li>
-          </ul>
-          </div>
-
-        </div><!--#login.panel-body-->
-      </div><!--.blur-content-->
-    </div><!--.login-screen-->
-
-    <div class="bg-blur dark">
-      <div class="overlay"></div><!--.overlay-->
-    </div><!--.bg-blur-->
-
-    <svg version="1.1" xmlns='http://www.w3.org/2000/svg'>
-      <filter id='blur'>
-        <feGaussianBlur stdDeviation='7' />
-      </filter>
-    </svg>
-
-<% end %>
-
-<br>
-<ul class="">
-  <li><%= render "devise/shared/links" %></li>
-</ul>
-</div><!--#login.panel-body-->
-
-
-</div><!--.blur-content-->
-</div><!--.login-screen-->
-
-
-=======
 <div class="login-screen">
   <div class="panel-login blur-content">
     <div class="panel-heading"><br />Slimspace<br /></div><!--.panel-heading-->
@@ -125,4 +48,3 @@
     </div><!--#login.panel-body-->
   </div><!--.blur-content-->
 </div><!--.login-screen-->
->>>>>>> 6f5c009cebdedafb26d1d368a5c9c77cc9db5b60

@@ -1,16 +1,30 @@
-<h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+<div class="login-screen">
+  <div class="panel-login blur-content">
+    <div class="panel-heading"><br />Slimspace<br /></div><!--.panel-heading-->
 
-<%= render "devise/shared/links" %>
+    <div id="pane-create-account" class="panel-body active">
+      <h2>Forgot your password?</h2>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="form-group">
+            <div class="inputer">
+              <div class="input-wrapper">
+                <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"Enter your email address" %>
+              </div>
+            </div>
+          </div><!--.form-group-->
+
+          <div class="form-buttons clearfix">
+            <%= f.submit "Reset my password",  class:"btn btn-white btn-block" %>
+          </div><!--.form-buttons-->
+          <ul class="extra-links">
+            <li><%= link_to "Log in", new_session_path(resource_name)%></li>
+            <li><%= link_to "Create a new account", new_registration_path(resource_name), class: "show-pane-create-account" %></li>
+          </ul><br />
+      <% end %>
+    </div><!--#login.panel-body-->
+  </div><!--.blur-content-->
+</div><!--.login-screen-->
