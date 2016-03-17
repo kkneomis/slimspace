@@ -4,7 +4,7 @@ class StaticPageController < ApplicationController
   end
   
   def about
-    @spaces=Space.take(3)
+    @spaces=Space.take(12)
   end
   
 end

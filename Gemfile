@@ -45,7 +45,7 @@ gem 'ratyrate'
 gem "therubyracer"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-'
+gem "gritter", "1.2.0"
 
 group :production do
 

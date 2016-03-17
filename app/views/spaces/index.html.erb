@@ -1,47 +1,49 @@
+<%= render "layouts/top.html.erb" %>
 
-<section class="border-top">
-	<div class="container">
-		<div class="page-title mrgb5x mrgt6x clearfix">
-			<h4 class="page-name">Available Spaces</h4>
-			<ul class="breadcrumb">
-				<li><a href="/">Home</a></li>
-				<li class="active"><a href="#">Spaces</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
+<% @spaces.each_slice(3) do |space_group| %>
+    <div class="row">
+      <% space_group.each do |space| %>
+          <div class="col-md-4">
+            <div class="card card-user card-clickable card-clickable-over-content">
+              <div class="card-heading heading-full">
+                <%= cl_image_tag(space.image_url(:thumbnail), width:"100%") %>
 
-<section>
-	<div class="container">
-		<div class="property-filter clearfix">
-	<% @spaces.each_slice(4) do |space_group| %>
-			<div class="row">
-				<ul class="filter-list clearfix">
-        <% space_group.each do |space| %>  
-					<li class="mix sale col-md-3 col-sm-4 mrgb5x" data-price="5">
-						<div class="property-box" >
-              <div class="appartment-img"><%= link_to cl_image_tag(space.image_url(:mini), width:"100%"), space %>
-							</div>
-							<div class="property-text">
-								<div class="appartment-name">
-									<h4><%= space.name %></h4>
-                  <p><%= space.city %>, <%= space.state %></p>
-								</div>
-								<ul class="appartment-detail">
-              </ul>
-							</div>
-						</div>
-					</li>
-          <% end %>
-				</ul>
-			</div>
-       <% end %>
-		</div>
-	</div>
-</section>
+                <div class="clickable-button">
+                  <div class="layer bg-green"></div>
+                  <a class="btn btn-floating btn-green initial-position floating-open"><i class="ion-android-share-alt"></i></a>
+                </div>
 
-      
+                <div class="layered-content bg-green">
+                  <div class="overflow-content">
+                    <h4>Follow Aleksio</h4>
+                    <ul class="inline-list social-list borderless">
+                      <li><a class="btn btn-facebook btn-ripple"><i class="ion-social-facebook"></i></a></li>
+                      <li><a class="btn btn-twitter btn-ripple"><i class="ion-social-twitter"></i></a></li>
+                      <li><a class="btn btn-googleplus btn-ripple"><i class="ion-social-googleplus"></i></a></li>
+                    </ul>
+                  </div><!--.overflow-content-->
+                  <div class="clickable-close-button">
+                    <a class="btn btn-floating initial-position floating-close"><i class="ion-android-close"></i></a>
+                  </div>
+                </div>
 
-				
+              </div><!--.card-heading-->
+
+              <div class="card-body">
+                <h3 class="card-title"><a href="#"><%= space.name %></a></h3>
+                <%= rating_for space, "space", :disable_after_rate => true %>
+                <div class="subhead">Room 300 in the <a href="#">Lesko Building</a></div>
+
+              </div><!--.card-body-->
+
+              <div class="card-footer">
+                <%= link_to "View this Space", space, class:"btn btn-xs btn-indigo pull-right" %>
+              </div><!--.card-footer-->
+
+            </div><!--.card-->
+          </div><!--.col-md-4-->
+      <% end %>
+    </div>
+<% end %>
 
 

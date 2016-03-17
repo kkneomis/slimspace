@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
+//= require gritter
 //= require_tree .
 
