@@ -1,30 +1,55 @@
+<div class="login-screen">
+  <div class="panel-login blur-content">
+    <div class="panel-heading"><br />Slimspace<br /></div><!--.panel-heading-->
 
-<div class="col-md-6 col-md-offset-3">
-<h2>Log in</h2>
+    <div id="pane-login" class="panel-body active">
+      <h2>Login to Slimspace</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <div class="inputer">
+          <div class="input-wrapper">
+            <%= f.email_field :email, autofocus: true, class:"form-control", placeholder: "Enter your email address" %>
+          </div>
+        </div>
+      </div><!--.form-group-->
+      <div class="form-group">
+        <div class="inputer">
+          <div class="input-wrapper">
+            <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder: "Enter your password" %>
+          </div>
+        </div>
+      </div><!--.form-group-->
+          <div class="form-group">
+            <div class="inputer">
+              <div class="input-wrapper">
+                <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Enter your password" %>
+              </div>
+            </div>
+          </div><!--.form-group-->
+      <div class="form-buttons clearfix">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class:"form-control" %>
-  </div>
-
-  <div class="form-group>
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in", class:"btn btn-primary btn-lg" %>
-  </div>
+        <label class="pull-left"><%= f.check_box :remember_me %> Remember me</label>
+        <%= f.submit "Log in", class:"btn btn-success pull-right" %>
+      </div><!--.form-buttons-->
 <% end %>
-                         
-                         <%= render "devise/shared/links" %>
+      <div class="social-accounts">
+        <div class="btn-group btn-merged btn-group-justified">
+          <div class="btn-group">
+            <a class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn btn-social btn-github"><i class="fa fa-github"></i> Github</a>
+          </div>
+        </div>
+      </div><!--.social-accounts-->
+
+      <ul class="extra-links">
+        <li><%= link_to "Forgot your password?", new_password_path(resource_name), class:"show-pane-forgot-password" %></li>
+        <li><%= link_to "Create a new account", new_registration_path(resource_name), class: "show-pane-create-account" %></li>
+      </ul><br />
+    </div><!--#login.panel-body-->
+    </div>
+  </div>
+
 </div>
 
