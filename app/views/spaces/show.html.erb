@@ -18,8 +18,8 @@
           <div class="col-md-3">
             <%= cl_image_tag(@space.image_url(:display), width:"100%")%>
             <%= rating_for @space, "space", :disable_after_rate => true %>
-            <p><%= @space.address %><br /><%= @space.city %>, <%= @space.state %><br /><br />3rd Floor<br />202-555-1212<br /> </p>
-            <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"more-detail" %>
+            <p><%= @space.address %><br /><%= @space.city %>, <%= @space.state %></p>
+            <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"btn btn-blue" %>
           </div><!--.col-md-3-->
           <div class="col-md-9">
 
@@ -36,6 +36,7 @@
               </div><!--.tab-pane-->
               <div class="tab-pane" id="tab1_2">
                 <div class="row">
+                  <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"btn btn-blue btn-sm pull-right" %>
                   <div class="col-md-12">
                   <% @space.bookings.each do |f| %>
                     <ul class="list-material">
