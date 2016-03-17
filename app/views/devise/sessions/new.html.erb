@@ -6,6 +6,7 @@
     <div id="pane-login" class="panel-body active">
       <h2>Login to Slimspace</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
       <div class="form-group">
         <div class="inputer">
           <div class="input-wrapper">

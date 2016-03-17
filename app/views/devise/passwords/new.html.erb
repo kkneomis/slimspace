@@ -1,6 +1,5 @@
 
 
-
 <div class="login-screen">
   <div class="panel-login blur-content">
     <div class="panel-heading"><br />Slimspace<br /></div><!--.panel-heading-->
@@ -8,7 +7,11 @@
     <div id="pane-create-account" class="panel-body active">
       <h2>Forgot your password?</h2>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-          <%= devise_error_messages! %>
+
+
+            <%= devise_error_messages! %>
+
+
           <div class="form-group">
             <div class="inputer">
               <div class="input-wrapper">
