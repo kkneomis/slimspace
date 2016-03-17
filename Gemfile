@@ -68,6 +68,5 @@ gem 'sdoc', require: false
 
 end
 
-
-
+gem 'local-subdomain'
 
