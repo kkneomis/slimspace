@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require colorpicker
 //= require turbolinks
-// require underscore
-// require gmaps/google
+//= require underscore
+//= require gmaps/google
 //= require_tree .
