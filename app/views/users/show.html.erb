@@ -54,42 +54,30 @@
               <div class="tab-pane active" id="about_overview">
                 <div class="legend">Contact Information</div>
                 <div class="row">
-                  <div class="col-md-3">Mobile Phones</div><!--.col-md-3-->
-                  <div class="col-md-9">+1-202-555-0173</div><!--.col-md-9-->
+                  <div class="col-md-3">Mobile Phone</div><!--.col-md-3-->
+                  <div class="col-md-9"><%= @user.phone %></div><!--.col-md-9-->
                 </div><!--.row-->
                 <div class="row">
-                  <div class="col-md-3">Address</div><!--.col-md-3-->
-                  <div class="col-md-9">2002 Holcombe Boulevard<br>Houston, TX 77030 </div><!--.col-md-9-->
+                  <div class="col-md-3">Street Address</div><!--.col-md-3-->
+                  <div class="col-md-9"><%= @user.street %> </div><!--.col-md-9-->
                 </div><!--.row-->
                 <div class="row">
-                  <div class="col-md-3">Website</div><!--.col-md-3-->
-                  <div class="col-md-9">http://www.teamfox.co</div><!--.col-md-9-->
+                  <div class="col-md-3">City</div><!--.col-md-3-->
+                  <div class="col-md-9"><%= @user.city %></div><!--.col-md-9-->
                 </div><!--.row-->
                 <div class="row">
-                  <div class="col-md-3">Email</div><!--.col-md-3-->
-                  <div class="col-md-9">info@teamfox.com</div><!--.col-md-9-->
+                  <div class="col-md-3">State</div><!--.col-md-3-->
+                  <div class="col-md-9"><%= @user.state %></div><!--.col-md-9-->
                 </div><!--.row-->
                 <div class="row">
-                  <div class="col-md-3">Facebook</div><!--.col-md-3-->
-                  <div class="col-md-9">fb.com/teamfoxco</div><!--.col-md-9-->
-                </div><!--.row-->
-                <div class="row">
-                  <div class="col-md-3">Twitter</div><!--.col-md-3-->
-                  <div class="col-md-9">twitter.com/teamfox</div><!--.col-md-9-->
+                  <div class="col-md-3">Zip</div><!--.col-md-3-->
+                  <div class="col-md-9"><%= @user.zip %></div><!--.col-md-9-->
                 </div><!--.row-->
 
-                <div class="legend">Basic Information</div>
+                <div class="legend">About Us</div>
                 <div class="row">
-                  <div class="col-md-3">Birth Date</div><!--.col-md-3-->
-                  <div class="col-md-9">July 17</div><!--.col-md-9-->
-                </div><!--.row-->
-                <div class="row">
-                  <div class="col-md-3">Birth Year</div><!--.col-md-3-->
-                  <div class="col-md-9">2014</div><!--.col-md-9-->
-                </div><!--.row-->
-                <div class="row">
-                  <div class="col-md-3">Gender</div><!--.col-md-3-->
-                  <div class="col-md-9">Male</div><!--.col-md-9-->
+                  <div class="col-md-3">Bio</div><!--.col-md-3-->
+                  <div class="col-md-9"><%= @user.bio %></div><!--.col-md-9-->
                 </div><!--.row-->
               </div><!--#about_overview.tab-pane-->
 

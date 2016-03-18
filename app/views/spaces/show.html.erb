@@ -4,7 +4,7 @@
   <div class="col-md-12">
     <div class="panel">
       <div class="panel-heading">
-        <div class="panel-title"><h4><%= @space.name %></h4> - <i class="ion-mic-b"></i> | <i class="ion-outlet"></i> | <i class="ion-wifi"></i>
+        <div class="panel-title"><h4><%= @space.name %></h4> 
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
               <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger button-striped button-full-striped btn-xs pull-right" %>
               <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success button-striped button-full-striped btn-xs pull-right" %>
@@ -18,7 +18,8 @@
           <div class="col-md-3">
             <%= cl_image_tag(@space.image_url(:display), width:"100%")%>
             <%= rating_for @space, "space", :disable_after_rate => true %>
-            <p><%= @space.address %><br /><%= @space.city %>, <%= @space.state %></p>
+            <p><%= @space.description %></p>
+            <p><b>Address:</b> <%= @space.address %><br /><%= @space.city %>, <%= @space.state %></p>
             <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"btn btn-blue" %>
           </div><!--.col-md-3-->
           <div class="col-md-9">

@@ -1,7 +1,6 @@
 class Space < ActiveRecord::Base
 
-  validates :name, presence: true
-  validates :capacity, numericality:{ greater_than: 0}
+  #validates :name, :capacity, presence: true
 
   mount_uploader :image, ImageUploader
   
