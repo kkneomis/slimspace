@@ -4,3 +4,11 @@
     right:0;
     z-index: 5;
 }
+
+#searchDateRange {
+    font-size: large;
+}
+
+#capacity {
+    font-size: large;
+}

@@ -16,12 +16,16 @@ class SpacesController < ApplicationController
       @desks= @space.desks.all
     end
   end
-  
 
-  
-  def index
-    @spaces = Space.where(parent_id: nil).order('created_at DESC')
-    
+
+
+  def index 
+    @spaces = Space.where(parent_id: nil).order('created_at DESC') 
+    if params[:searchDateRange] 
+      range = params[:searchDateRange].split('-')  
+    else  
+      range = nil
+    end 
   end
 
   def new
