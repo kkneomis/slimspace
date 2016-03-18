@@ -13,9 +13,9 @@
 //= require global-vendors
 //= require jquery_ujs
 //= require colorpicker
-//= require turbolinks
 //= require underscore
 //= require gmaps/google
 //= require gritter
+//= require turbolinks
 //= require_tree .
 
