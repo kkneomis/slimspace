@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Myapp</title>
+  <link rel="stylesheet" media="screen" href="/assets/layout.css" data-turbolinks-track="true" />
+  <link rel="stylesheet" media="screen" href="/assets/elements.css" data-turbolinks-track="true" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <%= csrf_meta_tags %>
+  <link href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
+</head>
+
+
+<body>
+
+
+  <%= yield %>
+
+
+<!-- BEGIN INITIALIZATION-->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<script>
+  Pleasure.init();
+  Layout.init();
+  FormsPickers.init();
+</script>
+<!-- END INITIALIZATION-->
+</html>

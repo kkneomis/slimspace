@@ -13,5 +13,6 @@
  *= require_tree .
  *= require gritter
  *= require_self
+ *= stub layout
  * require font-awesome
  */
