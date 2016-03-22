@@ -60,8 +60,9 @@
       <li>
         <a href="/">Home</a>
       </li>
+      <li><%= link_to "Browse Spaces", spaces_path %></li>
       <li>
-      <a href="javascript:;">Users</a>
+      <a href="javascript:;">My Profile</a>
         <ul class="child-menu">
           <% if user_signed_in? %>
               <li><%= link_to "My Profile", current_user %></li>
@@ -75,23 +76,16 @@
       </li>
 
       <li>
-        <a href="javascript:;">Spaces</a>
+        <a href="javascript:;">My Spaces</a>
         <ul class="child-menu">
-          <li><%= link_to "View Spaces", spaces_path %></li>
           <% if user_signed_in? %>
-              <li><%= link_to "My Bookings", bookings_booked_path %></li>
               <li><%= link_to "Add a Space", new_space_path %></li>
-              <li><%= link_to "Manage", manage_user_path(current_user) %></li>
+              <li><%= link_to "Manage Space Bookings", manage_user_path(current_user) %></li>
           <% end %>
         </ul>
       </li>
       <li>
-        <a href="javascript:;">Clients</a>
-        <ul class="child-menu">
-          <li><a href="/pages/client_signup">Client Signup</a></li>
-          <li><a href="/pages/create_space">Space Creation Page</a></li>
-          <li><a href="/pages/payment">Payment Information Page</a></li>
-        </ul>
+      <li><%= link_to "My Bookings", bookings_booked_path %></li>
       </li>
     </ul>
   </div><!--.menu-layer-->

@@ -1,51 +1,77 @@
- <section class="border-top">
-	<div class="container">
-		<div class="page-title mrgb6x mrgt6x clearfix">
-      <h4 class="page-name"><%= current_user.email %></h4>
-      <div class="tag-bar"> <a href="#"><span>Recent Bookings</span></a> </div>
-			<ul class="breadcrumb">
-				<li><a href="#">Pages</a></li>
-				<li class="active"><a href="#">Bookings booked</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
+<%= render "layouts/top.html.erb" %>
+
 
 <div class="row">
-  <div class="col-md-5">
+  <!---div class="col-md-5">
     <div id='manage_calendar'></div>
-  </div>
+  </div---->
 
-<div class="col-md-7 booked">
-  <br><br>
-<% @bookings.order('created_at DESC').each do |b| %>  
-  <% @space= Space.find(b.space_id) %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <%= link_to cl_image_tag(@space.image_url(:mini), width:"100%"), @space %>
-      </div>
+  <div class="col-md-6">
+    <div class="panel ">
+      <div class="panel-heading">
+        <div class="panel-title"><h4>Approved Bookings</h4></div>
+      </div><!--.panel-heading-->
+      <div class="panel-body without-padding">
+        <ul class="list-material has-hidden">
+        <% @bookings.where(approved: nil).order('created_at DESC').each do |b| %>
+        <% @space= Space.find(b.space_id) %>
+        <li class="has-action-left">
+            <a href="#" class="hidden" data-toggle="modal" data-target="#smallModal"><i class="ion-gear-a"></i></a>
+            <a href="/spaces/<%= @space.id %>" class="visible">
+              <div class="list-action-left">
+                <%=  cl_image_tag(@space.image_url(:mini), class:"face-radius") %>
+              </div>
+              <div class="list-content">
+                <span class="title"> <%= @space.name %></span>
+                <span class="caption"><%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br>
+              </span>
+              </div>
+            </a>
+          </li>
+              <div class="modal scale fade" id="smallModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-body text-center">
+                      <% if b.approved == nil %>
+                          <%= link_to "CONFIRM", confirm_booking_path(b), method: :put, class:"btn btn-success" %>
+                      <% end %>
+                      <%= link_to 'DENY', [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
+                    </div>
+                  </div><!--.modal-content-->
+                </div><!--.modal-dialog-->
+              </div><!--.modal-->
+          <% end %>
+        </ul>
+      </div><!--.panel-body-->
+    </div><!--.panel-->
+  </div><!--.col-->
+  <div class="col-md-6">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="panel-title"><h4>Approved Bookings</h4></div>
+      </div><!--.panel-heading-->
+      <div class="panel-body without-padding">
+        <ul class="list-material has-hidden">
+        <% @bookings.where(approved: true).order('created_at DESC').each do |b| %>
+        <% @space= Space.find(b.space_id) %>
+        <li class="has-action-left">
+            <%= link_to  [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"hidden" do%>
+              <i class="ion-android-delete"></i>
+            <% end %>
+            <a href="/spaces/<%= @space.id %>" class="visible">
+              <div class="list-action-left">
+                <%=  cl_image_tag(@space.image_url(:mini), class:"face-radius") %>
+              </div>
+              <div class="list-content">
+                <span class="title"> <%= @space.name %></span>
+                <span class="caption"><%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br>
 
-      <div class="col-md-3">
-
-        <b><a href="#" class="alert-link"> <%= @space.name %> at <%= @space.name %>:<br></a> <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours</b>
-        
-        <p>
-            <b>Address:</b>
-          <%=@space.address %>, <%= @space.city %>, <%= @space.state %> <br>
-          </p>
-        <% if b.approved == nil %>  
-          <%= link_to "CONFIRM", confirm_booking_path(b), method: :put, class:"btn btn-success" %>
-        <% end %>
-        <%= link_to 'CANCEL', [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
-        
-            </div>
-     
-     </div> 
-  </div>
- <br>
-       <% end %>
-
-  </div>				
-
-</div>
+              </span>
+              </div>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div><!--.panel-body-->
+    </div><!--.panel-->
+  </div><!--.col-->
