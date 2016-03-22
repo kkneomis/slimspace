@@ -97,31 +97,31 @@
   </div><!--.menu-layer-->
   <!-- END OF MENU LAYER -->
 
-  <!-- BEGIN SEARCH LAYER --> 
-  <div class="search-layer"> 
+  <!-- BEGIN SEARCH LAYER -->
+  <div class="search-layer">
     <div class="search">  <%= form_tag(spaces_path, :method => "get", id: "search-form", class: "search") do %> 
-      <div class="form-group">Slimspace Search <button type="submit" class="btn btn-default disabled"><i class="ion-search"></i></button> 
-        <div class="control-group"> 
-          <div class="controls"> 
-            <div class="input-group"> 
-              <div class="inputer"> 
-                <div class="input-wrapper"> 
-                  <h4>Date <i class="ion-android-calendar"></i></h4> 
-                  <%= text_field_tag :searchDateRange, params[:searchDateRange], value:"4/01/2016 1:00 PM - 4/01/2016 1:30 PM", class:"form-control bootstrap-daterangepicker-date-time searchRange", size:50 %><br /> 
-                  <h4>Size</h4> 
-                  <div class="form-group"> 
-                    <div class="inputer"> 
-                      <div class="input-wrapper"> 
-                        <%= number_field_tag :capacity, params[:capacity], placeholder:"ex: 5, 10, 300", class:"form-control" %> 
-                      </div> 
+          <div class="form-group">Slimspace Search <button type="submit" class="btn btn-default disabled"><i class="ion-search"></i></button> 
+            <div class="control-group"> 
+              <div class="controls"> 
+                <div class="input-group"> 
+                  <div class="inputer"> 
+                    <div class="input-wrapper"> 
+                      <h4>Date <i class="ion-android-calendar"></i></h4> 
+                      <%= text_field_tag :searchDateRange, params[:searchDateRange], value:"4/01/2016 1:00 PM - 4/01/2016 1:30 PM", class:"form-control bootstrap-daterangepicker-date-time searchRange", size:50 %><br /> 
+                      <h4>Size</h4> 
+                      <div class="form-group"> 
+                        <div class="inputer"> 
+                          <div class="input-wrapper"> 
+                            <%= number_field_tag :capacity, params[:capacity], placeholder:"ex: 5, 10, 300", class:"form-control" %> 
+                          </div> 
+                        </div> 
+                      </div><!--.form-group--> 
                     </div> 
-                  </div><!--.form-group--> 
+                  </div> 
                 </div> 
               </div> 
-            </div> 
+            </div>  
           </div> 
-        </div>  
-      </div> 
       <% end %> 
     </div><!--.search-->  
     <div class="results"> 
@@ -136,7 +136,9 @@
         </div><!--.col-->  
       </div><!--.row--> 
     </div><!--.results--> 
-  </div><!--.search-layer--> <!-- END OF SEARCH LAYER --> 
+
+  </div><!--.search-layer-->
+  <!-- END OF SEARCH LAYER -->
 
   <!-- BEGIN USER LAYER -->
   <div class="user-layer">
