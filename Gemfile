@@ -75,3 +75,6 @@ gem "font-awesome-rails"
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'fullcalendar-rails'
+gem 'arel'
+gem 'byebug'
+gem 'binding_of_caller'

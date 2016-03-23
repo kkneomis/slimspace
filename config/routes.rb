@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   
 
   get 'bookings/booked'
-  
+
   get 'static_pages/about'
   
   get 'static_pages/contact'

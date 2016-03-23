@@ -46,6 +46,8 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bookable (0.0.52)
       jbuilder (~> 1.2)
       rails_12factor
@@ -56,6 +58,7 @@ GEM
       sass (>= 3.3.0)
     bootstrap-switch-rails (3.3.3)
     builder (3.2.2)
+    byebug (8.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -72,6 +75,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -210,11 +214,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  arel
   better_errors (= 2.1.1)
+  binding_of_caller
   bookable (~> 0.0.4)
   bootstrap-datepicker-rails
   bootstrap-sass
   bootstrap-switch-rails
+  byebug
   carrierwave
   cloudinary
   coffee-rails (~> 4.1.0)

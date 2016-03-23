@@ -5,8 +5,6 @@ class SpacesController < ApplicationController
   before_filter :check_privacy, only: [:show]
   #privacy
 
-
-
   def show
     @space = Space.find(params[:id])
      @owner = User.find(@space.user_id)
@@ -17,9 +15,17 @@ class SpacesController < ApplicationController
     end
   end
 
-
   def index
-    @spaces = Space.all
+    if params[:searchDateRange]
+      byebug
+      @range = params[:searchDateRange].split('- ')
+      rstart = DateTime.strptime(@range[0], "%m/%d/%Y %I:%M %p")
+      rend = DateTime.strptime(@range[1], "%m/%d/%Y %I:%M %p")
+      @spaces = Space.find_by_sql ["select * from spaces where id not in (select space_id from bookings where (start_time >= ? and start_time < ?) or (start_time < ? and end_time > ?))", rstart, rend, rstart, rstart]
+      @fin = 1
+    else
+      @spaces = Space.all
+    end
     #if params[:searchDateRange]
     #  range = params[:searchDateRange].split('-')
     #else
@@ -74,9 +80,8 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
     end
 
-
     def space_params
-      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level, :can_book, :private, :scale, :confirm)
+      params.require(:space).permit(:name, :address, :description, :city, :state, :zip, :price, :number_of_seats, :user_id, :image, :parent_id, :level, :can_book, :private, :scale, :confirm, :searchDateRange)
     end
 
       def check_user
@@ -90,5 +95,4 @@ class SpacesController < ApplicationController
           redirect_to root_url, alert: "Sorry, this Space is private"\
         end
       end
-
 end
