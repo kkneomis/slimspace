@@ -1,14 +1,20 @@
+<% if  @hide != true %>
 <div class="page-header full-content bg-indigo">
   <div class="row">
     <div class="col-sm-6">
-      <h1>Slimspace <small>Room Reservation System</small></h1>
+    <% if @title1 != nil %>
+      <h1><%= @title1 %> <small><%= @title2 %></small></h1>
+    <% else %>
+      <h1>SlimSpace <small>Space Management Simplified </small></h1>
+    <% end %>
     </div><!--.col-->
     <div class="col-sm-6">
       <ol class="breadcrumb">
-        <li><a href="#"><i class="ion-home"></i></a></li>
+        <!----li><a href="#"><i class="ion-home"></i></a></li>
         <li><a href="#">UI Elements</a></li>
-        <li><a href="#" class="active">Tabs</a></li>
+        <li><a href="#" class="active">Tabs</a></li--->
       </ol>
     </div><!--.col-->
   </div><!--.row-->
 </div><!--.page-header-->
+<% end %>

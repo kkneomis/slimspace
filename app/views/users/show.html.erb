@@ -1,3 +1,10 @@
+<%
+@hide = true
+
+%>
+
+
+
 <div class="page-header full-content parallax" style="height: 600px; overflow: hidden">
   <div class="parallax-bg" style="background:
       linear-gradient(
@@ -135,47 +142,48 @@
         <div class="row image-row">
           <% @spaces.each_slice(3) do |space_group| %>
               <div class="row">
-                <% space_group.each do |space| %>
-                    <div class="col-md-4">
-                      <div class="card card-user card-clickable card-clickable-over-content">
-                        <div class="card-heading heading-full">
-                          <%= cl_image_tag(space.image_url(:thumbnail), width:"100%") %>
+                <% @spaces.each_slice(3) do |space_group| %>
+                    <div class="row ">
+                      <% space_group.each do |space| %>
+                          <div class="col-md-4">
+                            <div class="card card-user card-clickable card-clickable-over-content">
+                              <div class="card-heading heading-full">
+                                <%= link_to cl_image_tag(space.image_url(:thumbnail), width:"100%"), space %>
 
-                          <div class="clickable-button">
-                            <div class="layer bg-green"></div>
-                            <a class="btn btn-floating btn-green initial-position floating-open"><i class="ion-android-share-alt"></i></a>
-                          </div>
+                                <div class="clickable-button">
+                                  <div class="layer bg-indigo"></div>
+                                  <a class="btn btn-floating btn-indigo initial-position floating-open"><i class="ion-plus-round"></i></a>
+                                </div>
 
-                          <div class="layered-content bg-green">
-                            <div class="overflow-content">
-                              <h4>Follow Aleksio</h4>
-                              <ul class="inline-list social-list borderless">
-                                <li><a class="btn btn-facebook btn-ripple"><i class="ion-social-facebook"></i></a></li>
-                                <li><a class="btn btn-twitter btn-ripple"><i class="ion-social-twitter"></i></a></li>
-                                <li><a class="btn btn-googleplus btn-ripple"><i class="ion-social-googleplus"></i></a></li>
-                              </ul>
-                            </div><!--.overflow-content-->
-                            <div class="clickable-close-button">
-                              <a class="btn btn-floating initial-position floating-close"><i class="ion-android-close"></i></a>
-                            </div>
-                          </div>
+                                <div class="layered-content bg-indigo">
+                                  <div class="overflow-content">
+                                    <h4>Description</h4>
+                                    <p><%= space.description %></p>
+                                  </div><!--.overflow-content-->
+                                  <div class="clickable-close-button">
+                                    <a class="btn btn-floating initial-position floating-close"><i class="ion-android-close"></i></a>
+                                  </div>
+                                </div>
 
-                        </div><!--.card-heading-->
+                              </div><!--.card-heading-->
 
-                        <div class="card-body">
-                          <h3 class="card-title"><a href="#"><%= space.name %></a></h3>
-                          <%= rating_for space, "space", :disable_after_rate => true %>
-                          <div class="subhead">Room 300 in the <a href="#">Lesko Building</a></div>
+                              <div class="card-body">
+                                <h3 class="card-title"><a href="#"><%= space.name %></a></h3>
+                                <% if space.number_of_seats != nil %>
+                                    <div class="subhead"><%= space.number_of_seats %> Seats in this space</div>
+                                <% end %>
+                              </div><!--.card-body-->
 
-                        </div><!--.card-body-->
+                              <div class="card-footer">
+                                <%= link_to "View this Space", space, class:"btn btn-xs btn-indigo pull-right" %>
+                              </div><!--.card-footer-->
 
-                        <div class="card-footer">
-                          <%= link_to "View this Space", space, class:"btn btn-xs btn-indigo pull-right" %>
-                        </div><!--.card-footer-->
-
-                      </div><!--.card-->
-                    </div><!--.col-md-4-->
+                            </div><!--.card-->
+                          </div><!--.col-md-4-->
+                      <% end %>
+                    </div>
                 <% end %>
+
               </div>
           <% end %>
 

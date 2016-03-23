@@ -61,20 +61,21 @@
         <a href="/">Home</a>
       </li>
       <li><%= link_to "Browse Spaces", spaces_path %></li>
+      <% if user_signed_in? %>
       <li>
       <a href="javascript:;">My Profile</a>
         <ul class="child-menu">
-          <% if user_signed_in? %>
               <li><%= link_to "My Profile", current_user %></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-              <li><%= link_to "Login", new_user_session_path %></li>
-              <li data-open-after="true"><%= link_to "Sign Up", new_user_registration_path %></li>
-          <% end %>
         </ul>
       </li>
-
+      <% end %>
+      <% if !user_signed_in? %>
+          <li><%= link_to "Login", new_user_session_path %></li>
+          <li data-open-after="true"><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
+      <% if user_signed_in? %>
       <li>
         <a href="javascript:;">My Spaces</a>
         <ul class="child-menu">
@@ -87,6 +88,7 @@
       <li>
       <li><%= link_to "My Bookings", bookings_booked_path %></li>
       </li>
+      <% end %>
     </ul>
   </div><!--.menu-layer-->
   <!-- END OF MENU LAYER -->
@@ -561,8 +563,3 @@
 
 
 
-
-
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn btn-floating btn-red" href="/spaces/new" ><i class="ion-android-add"></i></a>
-</div>

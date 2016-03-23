@@ -1,6 +1,9 @@
-<%= render "layouts/top.html.erb" %>
+<%
+  @title1= "Browse Spaces"
+%>
+
 <% @spaces.each_slice(3) do |space_group| %>
-    <div class="row">
+    <div class="row ">
       <% space_group.each do |space| %>
           <div class="col-md-4">
             <div class="card card-user card-clickable card-clickable-over-content">
