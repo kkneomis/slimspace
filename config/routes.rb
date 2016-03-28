@@ -63,10 +63,12 @@ Rails.application.routes.draw do
 
   get 'bookings/booked'
 
-  get 'static_pages/about'
+  get 'static_page/about'
   
-  get 'static_pages/contact'
+  get 'static_page/contact'
 
-  root 'static_page#about'
+  #root 'static_page#about'
+
+  root 'spaces#index'
 
 end
