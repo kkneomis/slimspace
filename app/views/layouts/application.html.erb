@@ -18,14 +18,15 @@
 
 <div class="content">
   <%= render 'layouts/top' %>
-  <% unless flash.empty? %>
-      <script type="text/javascript">
-        <% flash.each do |f| %>
-        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-        toastr['<%= type %>']('<%= f[1] %>');
-        <% end %>
-      </script>
-  <% end %>
+
+  <div>
+    <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> fade in">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <%= value %>
+        </div>
+    <% end %>
+  </div>
 
   <%= yield %>
 </div>

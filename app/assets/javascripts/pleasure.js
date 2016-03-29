@@ -284,7 +284,7 @@ var Pleasure = {
 		if(!title)
 			title = '';
 		if(!notification){
-			notification = 'Sample Notification';
+			notification = 'This is my notification.';
 		}
 
 		toastr.options = {
@@ -303,7 +303,7 @@ var Pleasure = {
 		} else if(type === 'error') {
 			toastr.error(notification, title);
 		} else {
-			toastr.info(notification, title);
+            toastr.info(notification, title);
 		}
 
 	},
