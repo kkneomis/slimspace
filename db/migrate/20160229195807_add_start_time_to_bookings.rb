@@ -1,5 +1,8 @@
 class AddStartTimeToBookings < ActiveRecord::Migration
-  def change
+  def up
     add_column :bookings, :start_time, :datetime
+  end
+
+  def down
   end
 end
