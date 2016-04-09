@@ -12,6 +12,13 @@
       <div class="panel-heading">
         <div class="panel-title"><h4>Bookings Under Review</h4></div>
       </div><!--.panel-heading-->
+      <div class="card card-pricing card-pricing-simple">
+        <% if  @bookings.where(approved: nil).empty? %>
+            <div class="card-heading">
+              <h4>You have not <br> requested any bookings <br><br></h4>
+            </div><!--.card-heading-->
+        <% end %>
+      </div><!--.card-->
       <div class="panel-body without-padding">
         <ul class="list-material has-hidden">
           <% @bookings.where(approved: nil).order('created_at DESC').each do |b| %>
@@ -44,6 +51,13 @@
       <div class="panel-heading">
         <div class="panel-title"><h4>Approved Bookings</h4></div>
       </div><!--.panel-heading-->
+      <div class="card card-pricing card-pricing-simple">
+        <% if  @bookings.where(approved: true).empty? %>
+            <div class="card-heading">
+              <h4>You have no<br> approved bookings <br><br></h4>
+            </div><!--.card-heading-->
+        <% end %>
+      </div><!--.card-->
       <div class="panel-body without-padding">
         <ul class="list-material has-hidden">
           <% @bookings.where(approved: true).order('created_at DESC').each do |b| %>

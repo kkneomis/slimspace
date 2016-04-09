@@ -8,7 +8,7 @@
   <style>
     .bg-login{
       background-color: indigo;
-      background: url('http://40.media.tumblr.com/67140757fef063a8debcc99e94e23d60/tumblr_nm4rfdPKyx1slhhf0o1_1280.jpg')no-repeat center center fixed;
+      background: url('http://kakpovicom.fatcow.com/images/coffeeshop.jpg')no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -21,14 +21,14 @@
 <body class="bg-login printable">
 
 <div class="content">
-  <% unless flash.empty? %>
-      <script type="text/javascript">
-        <% flash.each do |f| %>
-        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-        toastr['<%= type %>']('<%= f[1] %>');
-        <% end %>
-      </script>
-  <% end %>
+  <div>
+    <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> fade in">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <%= value %>
+        </div>
+    <% end %>
+  </div>
 
   <%= yield %>
 </div>
