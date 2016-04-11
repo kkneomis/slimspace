@@ -2575,6 +2575,10 @@ output {
     color:#fff;
 }
 
+.bg-login.printable .form-control #edit  {
+    color:#000 !important;
+}
+
 .form-control:focus {
     border-color: #66afe9;
     outline: 0;
