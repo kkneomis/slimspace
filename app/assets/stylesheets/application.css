@@ -14,5 +14,6 @@
  *= require gritter
  *= require_self
  *= stub layout
+ *= require bootstrap-datetimepicker
  * require font-awesome
  */

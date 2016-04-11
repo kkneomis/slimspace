@@ -17,7 +17,7 @@ class SpacesController < ApplicationController
 
   def index
     if params[:searchDateRange]
-      byebug
+      #byebug
       @range = params[:searchDateRange].split('- ')
       rstart = DateTime.strptime(@range[0], "%m/%d/%Y %I:%M %p")
       rend = DateTime.strptime(@range[1], "%m/%d/%Y %I:%M %p")

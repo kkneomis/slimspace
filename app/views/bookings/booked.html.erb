@@ -3,6 +3,17 @@
   @title2= ""
 %>
 
+<div class="note note-info note-left-striped">
+    This is your booking management page. On this page you can see which spaces you have booked or have requested to book. All your booking requests appear on the left panel. Once your bookings have been approved, they will appear on the right panel.
+
+    <br><br>
+   <% if  @bookings.empty? %>  
+    <p>It looks like you haven't booked any spaces yet. Let's try browsing spaces so we can find the right one for your to book.</p>
+                <%= link_to "Browse Spaces", root_path, class:"btn btn-primary button-striped button-full-striped" %>
+    <% end %>
+</div>
+
+
 <div class="row">
   <!---div class="col-md-6">
     <div id='bookedcalendar'></div>
@@ -15,10 +26,12 @@
       <div class="card card-pricing card-pricing-simple">
         <% if  @bookings.where(approved: nil).empty? %>
             <div class="card-heading">
-              <h4>You have not <br> requested any bookings <br><br></h4>
+              <h4>You have not <br> requested any bookings<br><br></h4>
+              
             </div><!--.card-heading-->
         <% end %>
       </div><!--.card-->
+        
       <div class="panel-body without-padding">
         <ul class="list-material has-hidden">
           <% @bookings.where(approved: nil).order('created_at DESC').each do |b| %>
@@ -27,7 +40,8 @@
                 <%= link_to  [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"hidden" do%>
                     <i class="ion-android-delete"></i>
                 <% end %>
-                <a href="/spaces/<%= @space.id %>" class="visible">
+                <!---a href="/spaces/<% @space.id %>" class="visible"---->
+                <a data-toggle="modal" data-target="#smallModal" class="visible" href="#">
                   <div class="list-action-left">
                     <%=  cl_image_tag(@space.image_url(:mini), class:"face-radius") %>
                   </div>
@@ -40,6 +54,37 @@
 
                 </a>
               </li>
+            
+            <div class="modal scale fade" id="smallModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+                          <div class="col-md-12">
+                            <div class="card card-user card-clickable card-clickable-over-content">
+                              <div class="card-heading heading-full">
+                                <%= link_to cl_image_tag(@space.image_url(:thumbnail), width:"100%"), @space %>
+                              </div><!--.card-heading-->
+
+                              <div class="card-body">
+                                <h3 class="card-title"><a href="#"><%= @space.name %></a></h3>
+                                <% if @space.number_of_seats != nil %>
+                                  <div class="subhead"><%= @space.number_of_seats %> Seats in this space</div>
+                                <% end %><hr>
+                                  <small>You have booked this space from <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br></small>
+                              </div><!--.card-body-->
+
+                              <div class="card-footer">
+                                  <%= link_to "View this Space", @space, class:"btn btn-indigo btn-block" %>
+                                  <%= link_to  "Cancel this booking", [@space, b] , method: :delete, data: { confirm: 'Are you sure you want to cancel this booking?' }, class:"btn btn-danger btn-block"%>
+
+                              </div><!--.card-footer-->
+
+                            </div><!--.card-->
+                          </div><!--.col-md-4-->
+				</div><!--.modal-content-->
+			</div><!--.modal-dialog-->
+		</div><!--.modal-->
+            
+            
           <% end %>
         </ul>
       </div><!--.panel-body-->
@@ -58,6 +103,7 @@
             </div><!--.card-heading-->
         <% end %>
       </div><!--.card-->
+        
       <div class="panel-body without-padding">
         <ul class="list-material has-hidden">
           <% @bookings.where(approved: true).order('created_at DESC').each do |b| %>
@@ -66,7 +112,7 @@
                 <%= link_to  [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"hidden" do%>
                     <i class="ion-android-delete"></i>
                 <% end %>
-                <a href="/spaces/<%= @space.id %>" class="visible">
+                <a data-toggle="modal" data-target="#smallModal" class="visible" href="#">
                   <div class="list-action-left">
                     <%=  cl_image_tag(@space.image_url(:mini), class:"face-radius") %>
                   </div>
@@ -79,6 +125,36 @@
 
                 </a>
               </li>
+            
+            <div class="modal scale fade" id="smallModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+                          <div class="col-md-12">
+                            <div class="card card-user card-clickable card-clickable-over-content">
+                              <div class="card-heading heading-full">
+                                <%= link_to cl_image_tag(@space.image_url(:thumbnail), width:"100%"), @space %>
+                              </div><!--.card-heading-->
+
+                              <div class="card-body">
+                                <h3 class="card-title"><a href="#"><%= @space.name %></a></h3>
+                                <% if @space.number_of_seats != nil %>
+                                  <div class="subhead"><%= @space.number_of_seats %> Seats in this space</div>
+                                <% end %><hr>
+                                  <small>You have booked this space from <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br></small>
+                              </div><!--.card-body-->
+
+                              <div class="card-footer">
+                                  <%= link_to "View this Space", @space, class:"btn btn-indigo btn-block" %>
+                                  <%= link_to  "Cancel this booking", [@space, b] , method: :delete, data: { confirm: 'Are you sure you want to cancel this booking?' }, class:"btn btn-danger btn-block"%>
+
+                              </div><!--.card-footer-->
+
+                            </div><!--.card-->
+                          </div><!--.col-md-4-->
+				</div><!--.modal-content-->
+			</div><!--.modal-dialog-->
+		</div><!--.modal-->
+            
           <% end %>
         </ul>
       </div><!--.panel-body-->
@@ -86,3 +162,4 @@
   </div>
 
 </div>
+

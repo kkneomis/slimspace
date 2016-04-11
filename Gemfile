@@ -42,6 +42,8 @@ gem 'bookable', '~> 0.0.4'
 #Gem to set booking times for Spaces
 gem 'ratyrate'
 
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+
 gem "therubyracer"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -9,8 +9,9 @@
       <div class="panel-heading">
         <div class="panel-title"><h4><%= @space.name %></h4>
           <% if (user_signed_in?) && (current_user.id == @space.user_id) %>
-              <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger button-striped button-full-striped btn-xs pull-right" %>
-              <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success button-striped button-full-striped btn-xs pull-right" %>
+            <%= link_to "GO BACK", :back, class:"btn btn-flat btn-default pull-right"%> 
+              <%= link_to 'DELETE ', @space, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger btn-flat pull-right" %>
+              <%= link_to "EDIT ", edit_space_path(@space), class:"btn btn-success btn-flat pull-right" %>
           <% end %>
         </div>
 
@@ -20,11 +21,11 @@
         <div class="row example-row">
           <div class="col-md-3">
             <%= cl_image_tag(@space.image_url(:display), width:"100%")%>
-            <%= rating_for @space, "space", :disable_after_rate => true %>
+              <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"btn btn-blue btn-block" %>
+            <% rating_for @space, "space", :disable_after_rate => true %>
             <p>Owned by <%= link_to User.find(@space.user_id).name, User.find(@space.user_id)%></p>
             <p><%= @space.description %></p>
             <p><b>Address:</b> <%= @space.address %><br /><%= @space.city %>, <%= @space.state %></p>
-            <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"btn btn-blue" %>
           </div><!--.col-md-3-->
           <div class="col-md-9">
 
@@ -60,7 +61,7 @@
                           </div>
                           <div class="list-action-right">
                             <span class="top"><%= ((f.start_time - Time.now)/86400).round  %> days <br> from today</span>
-                            <i class="ion-android-done bottom"></i>
+                            <!--i class="ion-android-done bottom"></i----->
                           </div>
                         </a>
                       </li>

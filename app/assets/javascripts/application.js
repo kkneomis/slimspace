@@ -16,6 +16,8 @@
 //= require underscore
 //= require gmaps/google
 //= require gritter
+//= require moment
+//= require bootstrap-datetimepicker
 //= require layout
 // require turbolinks
 //= require_tree .

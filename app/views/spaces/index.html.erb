@@ -9,22 +9,6 @@
             <div class="card card-user card-clickable card-clickable-over-content">
               <div class="card-heading heading-full">
                 <%= link_to cl_image_tag(space.image_url(:thumbnail), width:"100%"), space %>
-
-                <div class="clickable-button">
-                  <div class="layer bg-indigo"></div>
-                  <a class="btn btn-floating btn-indigo initial-position floating-open"><i class="ion-plus-round"></i></a>
-                </div>
-
-                <div class="layered-content bg-indigo">
-                  <div class="overflow-content">
-                    <h4>Description</h4>
-                    <p><%= space.description %></p>
-                  </div><!--.overflow-content-->
-                  <div class="clickable-close-button">
-                    <a class="btn btn-floating initial-position floating-close"><i class="ion-android-close"></i></a>
-                  </div>
-                </div>
-
               </div><!--.card-heading-->
 
               <div class="card-body">
@@ -35,7 +19,7 @@
               </div><!--.card-body-->
 
               <div class="card-footer">
-                <%= link_to "View this Space", space, class:"btn btn-xs btn-indigo pull-right" %>
+                <%= link_to "View this Space", space, class:"btn btn-xs btn-indigo btn-block" %>
               </div><!--.card-footer-->
 
             </div><!--.card-->
@@ -43,3 +27,6 @@
       <% end %>
     </div>
 <% end %>
+
+
+
