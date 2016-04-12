@@ -34,7 +34,7 @@
         <% @space= Space.find(b.space_id) %>
         <li class="has-action-left">
             <a href="#" class="hidden" data-toggle="modal" data-target="#smallModal"><i class="ion-gear-a"></i></a>
-             <a data-toggle="modal" data-target="#smallModal" class="visible" href="#">
+            <a data-toggle="modal" data-target="#smallModal<%=b.id %>" class="visible" href="#">
               <div class="list-action-left">
                 <%=  cl_image_tag(@space.image_url(:mini), class:"face-radius") %>
               </div>
@@ -46,7 +46,7 @@
             </a>
           </li>
             <!------------------------------Modal-------------------------->
-            <div class="modal scale fade" id="smallModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal scale fade" id="smallModal<%=b.id %>" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
                           <div class="col-md-12">
@@ -60,7 +60,7 @@
                                 <% if @space.number_of_seats != nil %>
                                   <div class="subhead"><%= @space.number_of_seats %> Seats in this space</div>
                                 <% end %><hr>
-                                  <small>You have booked this space from <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br></small>
+                                  <small>This space space has been booked from <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br></small>
                               </div><!--.card-body-->
 
                               <div class="card-footer">
@@ -118,7 +118,7 @@
             <%= link_to  [@space, b] , method: :delete, data: { confirm: 'Are you sure?' }, class:"hidden" do%>
               <i class="ion-android-delete"></i>
             <% end %>
-            <a data-toggle="modal" data-target="#smallModal2" class="visible" href="#">
+            <a data-toggle="modal" data-target="#smallModal2<%=b.id %>" class="visible" href="#">
               <div class="list-action-left">
                 <%=  cl_image_tag(@space.image_url(:mini), class:"face-radius") %>
               </div>
@@ -131,7 +131,7 @@
             </a>
           </li>
             <!------------------------------Modal-------------------------->
-             <div class="modal scale fade" id="smallModal2" tabindex="-1" role="dialog" aria-hidden="true">
+             <div class="modal scale fade" id="smallModal2<%=b.id %>" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
                           <div class="col-md-12">
@@ -145,7 +145,7 @@
                                 <% if @space.number_of_seats != nil %>
                                   <div class="subhead"><%= @space.number_of_seats %> Seats in this space</div>
                                 <% end %><hr>
-                                  <small>You have booked this space from <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br></small>
+                                  <small>This space space has been booked  <%= b.start_time.strftime("%b/%d/%Y")  %> at <%= b.start_time.strftime("%I:%M%p")  %> for <%= b.length %> hours<br></small>
                               </div><!--.card-body-->
 
                               <div class="card-footer">
