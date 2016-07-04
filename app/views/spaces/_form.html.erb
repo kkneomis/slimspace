@@ -4,12 +4,14 @@
   <div class="col-md-12">
     <div class="panel">
       <div class="panel-heading">
-        <div class="panel-title"><h4>MAKING CHANGES TO YOUR SPACE...</h4></div>
+        <div class="panel-title"><h4>CREATING YOUR SPACE</h4></div>
       </div><!--.panel-heading-->
       <div class="panel-body">
 
         <div class="form-horizontal">
           <%= form_for @space do |f| %>
+            
+            
           <div class="form-content">
 
             <div class="form-group">
@@ -53,11 +55,13 @@
                 </div><!--.form-group-->
               </div><!--.col-md-9-->
             </div><!--.row-->
-
-            <%= f.hidden_field :address, value: current_user.street %>
-            <%= f.hidden_field :city, value: current_user.city %>
-            <%= f.hidden_field :state, value: current_user.state %>
-            <%= f.hidden_field :zip, value: current_user.zip %>
+         
+              
+    
+                <%= f.hidden_field :address, value: current_user.street %>
+                <%= f.hidden_field :city, value: current_user.city %>
+                <%= f.hidden_field :state, value: current_user.state %>
+                <%= f.hidden_field :zip, value: current_user.zip %>
 
 
             <div class="form-buttons">

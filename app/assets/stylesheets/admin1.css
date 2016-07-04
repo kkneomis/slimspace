@@ -13341,6 +13341,7 @@ h6 {
 .toast-message {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
+    margin-left: 20px;
 }
 .toast-message a,
 .toast-message label {

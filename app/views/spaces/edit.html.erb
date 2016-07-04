@@ -1,2 +1,233 @@
 
-<%= render 'form' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="panel-title"><h4>MAKING CHANGES TO YOUR SPACE...</h4></div>
+      </div><!--.panel-heading-->
+      <div class="panel-body">
+
+        <div class="form-horizontal">
+          <%= form_for @space do |f| %>
+            
+            
+          <div class="form-content">
+
+            <div class="form-group">
+              <label class="control-label col-md-3">Space Name</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                    <%= f.text_field :name, placeholder: 'ex: Office A' , class:"form-control", required: true%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group-->
+
+            <div class="form-group">
+              <label class="control-label col-md-3">Capacity</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                    <%= f.number_field :number_of_seats, placeholder: '(number of people) ex: 30' , class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group-->
+
+            <div class="form-group">
+              <label class="control-label col-md-3">Description</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                    <%= f.text_area :description, placeholder: 'Describe your space: ex: Capacity, Equipment, Wheelchair Accessibility, Is food allowed?', class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group-->
+
+            <div class="form-group">
+              <label class="control-label col-md-3">Add an Image</label>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <%= f.file_field :image, class:"form-control" %>
+                </div><!--.form-group-->
+              </div><!--.col-md-9-->
+            </div><!--.row-->
+              
+            <div class="form-group">
+              <label class="control-label col-md-3">Change Address</label>
+              <div class="col-md-5">
+                      <div id="locationField">
+                          <input id="autocomplete" placeholder="Type here to change your address"
+                                 onFocus="geolocate()" type="text" class="form-control"></input>
+                        </div>
+              </div>
+            </div><!--.form-group-->
+             
+            <div class="form-group">
+              <label class="control-label col-md-3">Address</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                    <%= f.text_field  :address, id:"address", class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group-->
+            
+            <div class="form-group">
+              <label class="control-label col-md-3">City</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                     <%= f.text_field  :city, id:"locality", class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group-->
+            
+            <div class="form-group">
+              <label class="control-label col-md-3">State</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                    <%= f.text_field  :state, id:"administrative_area_level_1", class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group-->
+            
+           <div class="form-group">
+              <label class="control-label col-md-3">Zip</label>
+              <div class="col-md-5">
+                <div class="inputer">
+                  <div class="input-wrapper">
+                    <%= f.text_field  :zip, id:"postal_code", class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div><!--.form-group--> 
+            
+         <!--leave this here, it needs for autocompelte to work-->   
+            <input type="text" id="street_number"hidden="hidden">
+            <input type="text" id="route"hidden="hidden">
+            <input type="text" id="country" hidden="hidden">
+         <!--leave this here, it needs it to work-->    
+    
+  
+            <div class="form-buttons">
+              <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                  <%= f.submit 'Submit', class:"btn btn-primary" %>
+                  <%= link_to 'Cancel', root_path, class:"btn btn-flat btn-default"%>
+                </div>
+              </div>
+            </div>
+
+            </div>
+        <% end %>
+        </div>
+
+      </div><!--.panel-body-->
+    </div><!--.panel-->
+  </div><!--.col-md-12-->
+</div><!--.row-->
+
+
+
+
+
+    <script>
+      // This example displays an address form, using the autocomplete feature
+      // of the Google Places API to help users fill in the information.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+          
+          concatenate()
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+        
+        //code to add the field for the address
+        function concatenate()
+        {
+        var position1 = document.getElementById("street_number").value;
+        var position2 = document.getElementById("route").value;
+
+        var allpositions = position1 + " " + position2;
+
+        document.getElementById("address").value = allpositions;
+
+        }
+        
+        //prevent form submit on enter
+        $("form").on("keypress", function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        });
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI2TLBMdf8mcAlodBCbe5WQPxbBpKy9wM&libraries=places&callback=initAutocomplete"
+        async defer></script>
