@@ -9,6 +9,7 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
     @owner = User.find(@space.user_id)
     @photos = Photo.where(:space_id => @space.id)
+    @bookings = @space.bookings.order(start_time: :desc)
     #if @owner != current_user
     #  @desks = @space.desks.where(private: false)
     #else

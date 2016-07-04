@@ -19,6 +19,26 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require layout
+//= require toastr
 // require turbolinks
 //= require_tree .
 
+$(document).ready(function() {
+    toastr.options = {
+      "closeButton": true,
+      "debug": true,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "showDuration": "10000",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+	
+	});

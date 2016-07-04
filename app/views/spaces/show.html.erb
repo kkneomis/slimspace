@@ -44,7 +44,7 @@
                 <div class="row">
                   <%= link_to "BOOK IT NOW", new_space_booking_path(@space), class:"btn btn-blue btn-sm pull-right" %>
                   <div class="col-md-12">
-                  <% @space.bookings.each do |f| %>
+                  <% @bookings.each do |f| %>
                     <ul class="list-material">
                       <li class="has-action-left has-action-right">
                         <a href="#" class="visible">
@@ -60,7 +60,12 @@
 
                           </div>
                           <div class="list-action-right">
-                            <span class="top"><%= ((f.start_time - Time.now)/86400).round  %> days <br> from today</span>
+                            <% @time = ((f.start_time - Time.now)/86400).round  %>
+                              <% if @time > 0 %>
+                                <span class="top"><%= @time  %> days <br> from today</span>
+                              <% else %>
+                                <span class="top"><%= @time.abs %> days <br> ago</span>
+                              <% end %>
                             <!--i class="ion-android-done bottom"></i----->
                           </div>
                         </a>
@@ -104,7 +109,6 @@
     </div><!--.panel-body-->
   </div><!--.panel-->
 </div><!--.col-md-12-->
-
 
 
             <div class="modal scale fade" id="smallModal" tabindex="-1" role="dialog" aria-hidden="true">
