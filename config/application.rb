@@ -11,18 +11,6 @@ module AngelHack
   class Application < Rails::Application
     config.time_zone = 'Eastern Time (US & Canada)'
 
-    config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
-    config.action_dispatch.rescue_responses["BadTaste"] = :bad_request
-
-    config.exception_handler = {
-        dev: true, # -> Runs in development mode WITHOUT changing the app environment files
-        layouts: {
-            '404' => nil,
-            '400' => nil,
-            '500' => 'exception'
-        }
-    }
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -7,4 +7,16 @@ module ApplicationHelper
       when :alert then "alert alert-error"
     end
   end
+  def static_map_for(latitude, longitude, name, options = {})
+    params = {
+        :center => [latitude, longitude].join(","),
+        :zoom => 14,
+        :size => "640x480",
+        :markers => [latitude, longitude].join(","),
+        :sensor => true
+    }.merge(options)
+
+    query_string =  params.map{|k,v| "#{k}=#{v}"}.join("&")
+    image_tag "http://maps.googleapis.com/maps/api/staticmap?#{query_string}", :alt => name, class: "googmap"
+  end
 end

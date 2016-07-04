@@ -91,12 +91,9 @@
               </div>
               <div class="tab-pane" id="tab1_4">
                 <div class="panel">
-                  <div class="panel-heading">
-                    <div class="panel-title"><h4>BASIC</h4></div>
-                  </div><!--.panel-heading-->
                   <div class="panel-body">
-                    <div style='width: 800px;'>
-                      <div id="map" style='width: 800px; height: 400px;'></div>
+                    <div style='width: 100%;'>
+                      <%= static_map_for(@space.latitude, @space.longitude, @space.name) %>
                     </div>
                   </div><!--.panel-body-->
                 </div><!--.panel-->
@@ -131,4 +128,24 @@
                   </div><!--.modal-content-->
                 </div><!--.modal-dialog-->
               </div><!--.modal-->
-  
+<script>
+  $( document ).ready(function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap({provider: {}, internal: {id: 'map'}}, function () {
+      markers = handler.addMarkers([
+      {
+        "lat": <%= @space.latitude %>,
+        "lng": <%= @space.longitude %>,
+        "picture": {
+        "url": "https://cws.auburn.edu/map/Content/images/suggestion-icon-placemark.png",
+        "width": 32,
+        "height": 32,
+      },
+      "infowindow": "hello!"
+    }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    });
+  });
+</script>

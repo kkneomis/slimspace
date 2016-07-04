@@ -81,6 +81,4 @@ gem 'underscore-rails'
 gem 'fullcalendar-rails'
 gem 'arel'
 gem 'byebug'
-gem 'binding_of_caller'
-gem 'exception_handler', '~> 0.5.0' #-> Gemfile
-gem 'ionicons-rails'
+gem 'geocoder'
