@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704013538) do
+ActiveRecord::Schema.define(version: 20160704040011) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160704013538) do
     t.boolean  "approved"
     t.datetime "start_time"
     t.integer  "length"
+    t.string   "title"
   end
 
   create_table "desks", force: :cascade do |t|

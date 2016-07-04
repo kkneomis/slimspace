@@ -40,7 +40,7 @@
               <div class="col-md-9">
                 <div class="inputer">
                   <div class="input-wrapper">
-                    <input type="text" name="" class="form-control" autofocus placeholder="ex: Monthly yoga class", required=true>
+                      <%= f.text_field 'title', class:"form-control", placeholder:"ex: Monthly yoga class", required:true%>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
               <label class="control-label col-md-3">Booking Duration</label>
               <div class="col-md-9">
                   <div class="input-wrapper">
-                      <%= f.number_field 'length', min: 1, class:"form-control", required:true, placeholder:"How long are your booking it for? (hours)" %>
+                      <%= f.number_field 'length', min: 1, class:"form-control", required:true, placeholder:"How long are you booking it for? (hours)" %>
                   </div>
               </div>
             </div><!--.form-group-->
@@ -62,6 +62,7 @@
               <label class="control-label col-md-3">Start Time</label>
               <div class="col-md-9">
                   <%= f.text_field :start_time, class:"form-control", id:"datetimepicker12" %>
+                     <% f.datetime_select :start_time, class:"form-control"%>
               </div>
             </div><!--.form-group-->
               
