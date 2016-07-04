@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'devise'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'fullcalendar-rails'
+#gem 'fullcalendar-rails'
 
 gem 'bootstrap-datepicker-rails'
 gem "bootstrap-switch-rails"
@@ -52,11 +52,8 @@ gem "therubyracer"
 gem "gritter", "1.2.0"
 
 group :production do
-
-gem 'pg'
-
-gem 'rails_12factor'
-
+    gem 'pg'
+    gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -64,7 +61,6 @@ group :development, :test do
 gem 'sqlite3'
   gem 'better_errors', '2.1.1'
   gem 'quiet_assets'
-
 end
 
 group :doc do
