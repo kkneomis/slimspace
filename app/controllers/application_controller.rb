@@ -8,20 +8,20 @@ class ApplicationController < ActionController::Base
   
    protected
      def configure_permitted_parameters
-       devise_parameter_sanitizer.for(:sign_up) << :name
-       devise_parameter_sanitizer.for(:sign_up) << :phone
-       devise_parameter_sanitizer.for(:sign_up) << :street
-       devise_parameter_sanitizer.for(:sign_up) << :city
-       devise_parameter_sanitizer.for(:sign_up) << :state
-       devise_parameter_sanitizer.for(:sign_up) << :zip
-       devise_parameter_sanitizer.for(:account_update) << :name
-       devise_parameter_sanitizer.for(:account_update) << :phone
-       devise_parameter_sanitizer.for(:account_update) << :bio
-       devise_parameter_sanitizer.for(:account_update) << :avatar 
-       devise_parameter_sanitizer.for(:account_update) << :street
-       devise_parameter_sanitizer.for(:account_update) << :city
-       devise_parameter_sanitizer.for(:account_update) << :state
-       devise_parameter_sanitizer.for(:account_update) << :zip
-   end
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:phone])
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:street])
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:city])
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:state])
+       devise_parameter_sanitizer.permit(:sign_up, keys: [:zip])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:phone])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:bio])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:street])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:city])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:state])
+       devise_parameter_sanitizer.permit(:account_update, keys: [:zip])
+     end
 
 end
