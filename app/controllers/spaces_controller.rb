@@ -7,12 +7,13 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find(params[:id])
-     @owner = User.find(@space.user_id)
-    if @owner != current_user
-      @desks = @space.desks.where(private: false)
-    else
-      @desks= @space.desks.all
-    end
+    @owner = User.find(@space.user_id)
+    @photos = Photo.where(:space_id => @space.id)
+    #if @owner != current_user
+    #  @desks = @space.desks.where(private: false)
+    #else
+    #  @desks= @space.desks.all
+    #end
   end
 
   def index

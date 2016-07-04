@@ -19,7 +19,7 @@
   <div class="col-md-6">
     <div class="panel ">
       <div class="panel-heading">
-        <div class="panel-title"><h4>Bookings Pending Approval</h4></div>
+        <div class="panel-title"><h4>Pending</h4></div>
       </div><!--.panel-heading-->
       <div class="card card-pricing card-pricing-simple">
       <% if  @bookings.where(approved: nil).empty? %>
@@ -101,7 +101,7 @@
   <div class="col-md-6">
     <div class="panel">
       <div class="panel-heading">
-        <div class="panel-title"><h4>Approved Bookings</h4></div>
+        <div class="panel-title"><h4>Approved</h4></div>
       </div><!--.panel-heading-->
       <div class="card card-pricing card-pricing-simple">
         <% if  @bookings.where(approved: true).empty? %>

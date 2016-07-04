@@ -61,11 +61,14 @@
               <div class="form-group">
               <label class="control-label col-md-3">Start Time</label>
               <div class="col-md-9">
-                    <%= f.datetime_select :start_time, class:"form-control"%>
+                  <%= f.text_field :start_time, class:"form-control", id:"datetimepicker12" %>
               </div>
             </div><!--.form-group-->
               
               <br><br>
+              
+    
+              
               
            <div class="form-group">
               <%= f.submit 'Book this Space!', class:"btn btn-indigo btn-lg pull-right" %>

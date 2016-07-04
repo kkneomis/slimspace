@@ -55,9 +55,8 @@ Rails.application.routes.draw do
   
   resources :spaces do
       resources :bookings
+      resources :photos
 	end
-
-  
 
   
 
@@ -67,8 +66,8 @@ Rails.application.routes.draw do
   
   get 'static_page/contact'
 
-  #root 'static_page#about'
+  root 'static_page#about'
 
-  root 'spaces#index'
+  #root 'spaces#index'
 
 end

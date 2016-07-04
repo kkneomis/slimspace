@@ -7,6 +7,7 @@ class Space < ActiveRecord::Base
   has_many :users, through: :bookings
   has_many :desks, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :photos, dependent: :destroy
   
   ratyrate_rateable "space"
 end
