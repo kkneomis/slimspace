@@ -156,7 +156,8 @@
         // Create the autocomplete object, restricting the search to geographical
         // location types.
         autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('autocomplete')),
             {types: ['geocode']});
 
         // When the user selects an address from the dropdown, populate the address
@@ -185,7 +186,6 @@
           
           concatenate()
       }
-
      
         
         //code to add the field for the address
@@ -208,5 +208,5 @@
         });
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI2TLBMdf8mcAlodBCbe5WQPxbBpKy9wM&libraries=places&callback=initAutocomplete"
+    <script sync defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI2TLBMdf8mcAlodBCbe5WQPxbBpKy9wM&libraries=places&callback=initAutocomplete"
         async defer></script>
