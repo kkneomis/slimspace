@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   class CustomDomainConstraint
     # Implement the .matches? method and pass in the request object
     def self.matches? request
@@ -67,6 +71,9 @@ Rails.application.routes.draw do
   get 'static_page/contact'
 
   root 'static_page#about'
+
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 
   #root 'spaces#index'
 
