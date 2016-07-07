@@ -2,6 +2,32 @@
   @title1= "Browse Spaces"
 %>
 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <%= form_tag(spaces_path, :method => "get", id: "search-form", class: "search") do %>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Search by Capacity</span>
+                  <b> 1 person </b> <input id="capacity" type="text" class="span2" value="" name="capacity" data-slider-min="1" data-slider-max="1000" data-slider-step="1" data-slider-value="[1,1000]"/> <b>1000 people</b>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default btn-white">Search</button>
+                    </span>
+                </div>        
+
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Search by Date</span>
+                  <%= text_field_tag :searchDateRange, params[:searchDateRange],  placeholder:"Search by date", class:"form-control bootstrap-daterangepicker-date-time searchRange", size:50, id:"input-search"%>
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn btn-default btn-white">Search</button>
+                   </span>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<br>
+
 <% @spaces.each_slice(3) do |space_group| %>
     <div class="row ">
       <% space_group.each do |space| %>
@@ -30,3 +56,12 @@
 
 
 
+<script>
+
+// With JQuery
+$("#capacity").slider({});
+
+// Without JQuery
+var slider = new Slider('#capacity', {});
+
+</script>

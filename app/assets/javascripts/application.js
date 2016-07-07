@@ -20,6 +20,7 @@
 //= require bootstrap-datetimepicker
 //= require layout
 //= require toastr
+//= require bootstrap-slider
 // require turbolinks
 //= require_tree .
 

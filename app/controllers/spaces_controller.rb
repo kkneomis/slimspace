@@ -18,14 +18,27 @@ class SpacesController < ApplicationController
   end
 
   def index
-    if params[:searchDateRange]
-      #byebug
-      @range = params[:searchDateRange].split('- ')
-      rstart = DateTime.strptime(@range[0], "%m/%d/%Y %I:%M %p")
-      rend = DateTime.strptime(@range[1], "%m/%d/%Y %I:%M %p")
-      @spaces = Space.find_by_sql ["select * from spaces where id not in (select space_id from bookings where (start_time >= ? and start_time < ?) or (start_time < ? and end_time > ?))", rstart, rend, rstart, rstart]
-      @fin = 1
-    else
+    if params[:searchDateRange] && (params[:searchDateRange] != "")
+      #byebug && 
+          @range = params[:searchDateRange].to_s.split('- ')
+          rstart = DateTime.strptime(@range[0], "%m/%d/%Y %I:%M %p")
+          rend = DateTime.strptime(@range[1], "%m/%d/%Y %I:%M %p")
+          @spaces = Space.find_by_sql ["select * from spaces where id not in (select space_id from bookings where (start_time >= ? and start_time < ?) or (start_time < ? and end_time > ?))", rstart, rend, rstart, rstart]
+          @fin = 1 
+    end
+      
+    if params[:capacity]
+        @range = params[:capacity].split(',')
+        min_cap = @range[0]
+        max_cap = @range[1]
+        if @spaces != nil
+            @spaces = Space.find_by_sql ["select * from spaces s where s.number_of_seats between ? and ?", min_cap, max_cap] 
+        else
+            @spaces = @spaces.find_by_sql ["select * from spaces s where s.number_of_seats between ? and ?", min_cap, max_cap] 
+        end
+    end
+    
+    if @spaces == nil
       @spaces = Space.all
     end
     #if params[:searchDateRange]
