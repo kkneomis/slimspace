@@ -7,11 +7,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
   <link href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
-    <meta name="google-site-verification" content="mI79pphfzEFa_NPTH9ZuD9TTGu1Enkps59nqyzimuFs" />
+  <style>
+    .http-error-outside{
+      background-color: indigo;
+      background: url('http://simeonkakpovi.com/slimspace-images/main-image.jpg')no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
 </head>
 
 
-<body>
+<body class="http-error-outside">
 
 
   <%= yield %>
