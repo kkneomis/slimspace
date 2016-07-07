@@ -1,0 +1,49 @@
+<div class="container">
+  <h3 class="text-black text-center">CONTACT</h3>
+  <p class="caption text-center">We will be glad if you write us.</p>
+
+  <%= form_for @contact do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="inputer inputer-teal floating-label">
+          <div class="input-wrapper">
+            <%= f.text_field :name, required: true, class: "form-control" %>
+            <%= f.label :name %>
+          </div><!--.input-wrapper-->
+        </div><!--.inputer-->
+      </div><!--.form-group-->
+    </div><!--.col-->
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="inputer inputer-teal floating-label">
+          <div class="input-wrapper">
+            <%= f.email_field :email, required: true, class: "form-control" %>
+            <%= f.label :email %>
+          </div><!--.input-wrapper-->
+        </div><!--.inputer-->
+      </div><!--.form-group-->
+    </div><!--.col-->
+  </div><!--.row-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <div class="inputer inputer-teal floating-label">
+          <div class="input-wrapper">
+            <%= f.text_area :message, rows:1, class: "form-control js_auto_size" %>
+            <%= f.label "Your Message" %>
+          </div>
+        </div>
+      </div><!--.form-group-->
+    </div><!--.col-->
+  </div><!--.row-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.submit 'SEND', class: "btn btn-indigo pull-right" %>
+    </div><!--.col-->
+  </div><!--.row-->
+
+  <% end %>
+</div><!--.container-->

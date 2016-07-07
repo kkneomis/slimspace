@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       resources :photos
 	end
 
-  
+  resources :contacts, only: [:new, :create, :sendMessage]
 
   get 'bookings/booked'
 
