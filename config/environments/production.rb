@@ -76,16 +76,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
+  config.action_mailer.default_url_options = { host: 'http://www.slimspace.io/' }
   config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :authentication => :plain,
-  :address => "smtp.mailgun.org",
-  :port => 587,
-  :domain => "slimspace.io",
-  :user_name => "postmaster@slimspace.io",
-  :password => "06ac6b87657b5e67baee85e4a6b7f51d"
-}
+    config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => "smtp.mailgun.org",
+      :port => 587,
+      :domain => "slimspace.io",
+      :user_name => "postmaster@slimspace.io",
+      :password => "06ac6b87657b5e67baee85e4a6b7f51d"
+    }
 
 
 end
